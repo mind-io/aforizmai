@@ -1,0 +1,14 @@
+{
+   "folders":
+   [
+      {
+         "path": "/d/xampp/htdocs/laravel-blog"
+      }
+   ],
+   "settings": {
+      "sublime-view-in-browser": {
+         "baseUrl": "http://localhost/laravel-blog",
+         "basePath": "d:\\xampp\\htdocs\\laravel-blog"
+      }
+   }
+}

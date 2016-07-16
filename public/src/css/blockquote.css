@@ -1,0 +1,107 @@
+/*Font awsome hoover*/
+
+* > .fa.fa-hover-show,
+*:hover > .fa.fa-hover-hidden {
+  display: none;
+}
+*:hover > .fa.fa-hover-show {
+  display: inline-block;
+}
+
+
+/*Navbar*/
+
+.navbar-brand {
+  font-family: 'Kaushan Script', cursive;
+  /*font-family: 'Aladin', cursive;*/
+  /*font-family: 'Lobster', cursive;*/
+  font-size:24px;
+  padding: 0px 0px 6px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand>img {
+  height: 100%;
+  padding: 2px 10px; /* firefox bug fix */
+  width: auto;
+}
+
+/*Table border*/
+
+
+.borderless tr td {
+    border: none !important;
+    padding: 5px !important;
+}
+
+
+/*Block quote*/
+
+blockquote {
+	display:block;
+	background:#fff;
+	padding:25px 15px 10px;
+	margin:30px 0;
+	position:relative;
+	/*font-family:Georgia,serif;*/
+	/*font-size:16px;*/
+	line-height:1.2em;
+	/*color:#666;*/
+	text-align:justify;
+	border-left:15px solid #2c3e50;
+	border-right:2px solid #2c3e50;
+	border-radius: 5px;
+	box-shadow:2px 2px 10px #ccc
+}
+
+blockquote::before {
+	content:"\201C";
+	font-family:Georgia,serif;
+	font-size:70px;
+	font-weight:bold;
+	color:#18bc9c;
+	position:absolute;
+	left:15px;
+	top:7px;
+	text-shadow:2px 2px 0 #ccc
+}
+
+blockquote::after {
+	content:""
+}
+
+blockquote a {
+	text-decoration:none;
+	font-style:italic
+	/*color:#ffa133*/
+}
+
+/*blockquote a:hover{color:#333}*/
+/*blockquote em{font-style:italic}*/
+
+blockquote p {
+	margin:0!important
+}
+
+blockquote cite {
+	/*color:#999;*/
+	font-size:16px;
+	display:block;
+	margin-top:5px;
+}
+
+blockquote cite:before {
+	content:"\2014 \2009";
+}
+
+blockquote:hover{
+  background: #ecf0f1;
+  /*color: #ffffff;*/
+  
+  /*transition: all 1s;*/
+  /*-moz-transition: all 1s; /* Firefox 4 */*/
+  /*-webkit-transition: all 1s; /* Safari and Chrome */*/
+  /*-o-transition: all 1s; /* Opera */*/
+
+

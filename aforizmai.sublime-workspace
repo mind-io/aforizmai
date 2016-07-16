@@ -1,0 +1,584 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Admin",
+				"AdminController@getLogin"
+			],
+			[
+				"Ad",
+				"AdminController@getIndex"
+			],
+			[
+				"contact",
+				"contact_messages"
+			],
+			[
+				"cont",
+				"contact_messages"
+			],
+			[
+				"con",
+				"$contact_messages〔variable〕"
+			],
+			[
+				"Route",
+				"Router::model	Register a model binder for a wildcard."
+			],
+			[
+				"conta",
+				"contact_message"
+			],
+			[
+				"cate",
+				"$categoryIDs〔variable〕"
+			],
+			[
+				"for",
+				"foreach"
+			],
+			[
+				"Res",
+				"Response::json	Create a JSON Response"
+			],
+			[
+				"end",
+				"endsection"
+			],
+			[
+				"ac",
+				"action	Attr"
+			],
+			[
+				"sec",
+				"section	Tag"
+			],
+			[
+				"S",
+				"Schema::drop	Drop an existing database table"
+			],
+			[
+				"Sche",
+				"Schema::create-table	Create new table"
+			],
+			[
+				"Auth",
+				"Authenticatable"
+			],
+			[
+				"Sessio",
+				"Session::get	Retrieve an Item from the Session or Default Value"
+			],
+			[
+				"Session",
+				"Session::has	Determin if an Item Exists in the Session"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"author",
+				"author_name"
+			],
+			[
+				"me",
+				"message"
+			],
+			[
+				"current",
+				"currentPage"
+			],
+			[
+				"quote",
+				"quote_author"
+			],
+			[
+				"Author",
+				"author"
+			],
+			[
+				"quo",
+				"quotes"
+			],
+			[
+				"auth",
+				"author"
+			],
+			[
+				"aut",
+				"author"
+			],
+			[
+				"rou",
+				"Route"
+			],
+			[
+				"Se",
+				"section"
+			],
+			[
+				"re",
+				"return"
+			],
+			[
+				"nice",
+				"niceness"
+			],
+			[
+				"logged",
+				"logged_actions"
+			],
+			[
+				"category",
+				"category1"
+			],
+			[
+				"Ni",
+				"NiceActionLog"
+			],
+			[
+				"Nice",
+				"NiceAction"
+			],
+			[
+				"str",
+				"strtolower"
+			],
+			[
+				"req",
+				"request"
+			],
+			[
+				"ni",
+				"nice_action"
+			],
+			[
+				"strto",
+				"strtoupper"
+			],
+			[
+				"v",
+				"view"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"r",
+				"route	blade-route"
+			],
+			[
+				"u",
+				"ul	Tag"
+			],
+			[
+				"hea",
+				"header	Tag"
+			],
+			[
+				"d",
+				"div	Tag"
+			],
+			[
+				"var_",
+				"var_export"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"l",
+				"length2"
+			],
+			[
+				"len",
+				"length"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"leng",
+				"length2"
+			],
+			[
+				"inclu",
+				"get_included_files"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"PHP Code Sniffer: ",
+				"PHP Code Sniffer: Goto next error"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"packe",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 146.0,
+		"history":
+		[
+			"php artisan make:model Post -m",
+			" import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			" import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/d/xampp/htdocs/laravel-blog",
+		"/d/xampp/htdocs/laravel-blog/resources",
+		"/d/xampp/htdocs/laravel-blog/resources/views"
+	],
+	"file_history":
+	[
+		"/d/xampp/htdocs/laravel-blog/app/Http/Controllers/AdminController.php",
+		"/D/xampp/htdocs/laravel-blog/resources/views/admin/login.blade.php",
+		"/d/xampp/htdocs/laravel-blog/resources/views/admin/index.blade.php",
+		"/D/xampp/htdocs/laravel-blog/resources/views/admin/other/contact_messages.blade.php",
+		"/d/xampp/htdocs/laravel-blog/public/src/js/contact-messages.js",
+		"/d/xampp/htdocs/laravel-blog/resources/views/frontend/other/contact.blade.php",
+		"/d/xampp/htdocs/laravel-blog/public/src/js/categories.js",
+		"/d/xampp/htdocs/laravel-blog/app/Events/MessageSent.php",
+		"/d/xampp/htdocs/laravel-blog/app/Listeners/SendConfirmation.php",
+		"/d/xampp/htdocs/laravel-blog/app/Listeners/SendNotification.php",
+		"/D/xampp/htdocs/laravel-blog/resources/views/email/contact-message-confirmation.blade.php",
+		"/d/xampp/htdocs/laravel-blog/resources/views/email/contact-message-notification.blade.php",
+		"/d/xampp/htdocs/laravel-blog/app/Http/Controllers/PostController.php",
+		"/d/xampp/htdocs/laravel-blog/resources/views/includes/admin-header.blade.php",
+		"/D/xampp/htdocs/laravel-blog/resources/views/email/contact-message-notification.blade.php",
+		"/d/xampp/htdocs/laravel-blog/app/Providers/EventServiceProvider.php",
+		"/d/xampp/htdocs/laravel-blog/app/Http/Controllers/CategoryController.php",
+		"/d/xampp/htdocs/laravel-blog/resources/views/admin/blog/create_post.blade.php",
+		"/D/xampp/htdocs/laravel-blog/resources/views/admin/blog/categories.blade.php",
+		"/d/xampp/htdocs/laravel-blog/resources/views/admin/blog/edit_post.blade.php",
+		"/D/xampp/htdocs/laravel-blog/resources/views/errors/404.blade.php",
+		"/D/xampp/htdocs/bitnami.css",
+		"/d/xampp/htdocs/laravel-blog/resources/views/admin/blog/index.blade.php",
+		"/D/xampp/htdocs/laravel-blog/app/Http/Controllers/CategoryController.php",
+		"/d/xampp/htdocs/laravel-blog/app/Category.php",
+		"/d/xampp/htdocs/laravel-blog/_ide_helper.php",
+		"/d/xampp/htdocs/laravel-blog/resources/views/admin/blog/single.blade.php",
+		"/D/xampp/htdocs/laravel-blog/composer.json",
+		"/d/xampp/htdocs/laravel-blog/config/app.php",
+		"/C/Users/Edvardas/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Edvardas/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/d/xampp/htdocs/laravel-blog/resources/views/frontend/blog/index.blade.php",
+		"/C/Users/Edvardas/AppData/Roaming/Sublime Text 3/Packages/User/PHP.sublime-settings",
+		"/C/Users/Edvardas/AppData/Roaming/Sublime Text 3/Installed Packages/Theme - Dark Material.sublime-package",
+		"/C/Users/Edvardas/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Edvardas/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+		"/d/xampp/htdocs/laravel-blog/vendor/classpreloader/classpreloader/src/Config.php",
+		"/d/xampp/htdocs/laravel-blog/resources/views/frontend/blog/single.blade.php",
+		"/D/xampp/htdocs/laravel-blog/resources/views/admin/blog/index.blade.php",
+		"/D/xampp/htdocs/laravel-blog/resources/views/admin/index.blade.php",
+		"/D/xampp/htdocs/laravel-blog/resources/views/admin/blog/create_post.blade.php",
+		"/D/xampp/htdocs/laravel-blog/app/Http/Controllers/AdminController.php",
+		"/C/Users/Edvardas/AppData/Roaming/Sublime Text 3/Packages/User/blade.sublime-settings",
+		"/C/Users/Edvardas/AppData/Roaming/Sublime Text 3/Packages/Laravel 5 Artisan/Laravel 5 Artisan.sublime-settings",
+		"/C/Users/Edvardas/AppData/Roaming/Sublime Text 3/Packages/User/Laravel 5 Artisan.sublime-commands",
+		"/d/xampp/htdocs/laravel-blog/app/Post.php",
+		"/D/xampp/htdocs/laravel-blog/resources/views/frontend/blog/index.blade.php",
+		"/D/xampp/htdocs/laravel-blog/resources/views/layouts/admin-master.blade.php",
+		"/D/xampp/htdocs/laravel-blog/resources/views/includes/admin-header.blade.php",
+		"/d/xampp/htdocs/laravel-blog/database/seeds/AdminTableSeeder.php",
+		"/d/xampp/htdocs/laravel-blog/database/seeds/CategoryTableSeeder.php",
+		"/d/xampp/htdocs/laravel-blog/database/seeds/DatabaseSeeder.php",
+		"/D/xampp/htdocs/laravel-blog/app/Http/Controllers/PostController.php",
+		"/D/xampp/htdocs/laravel-blog/app/Http/Controllers/ContactMessageController.php",
+		"/d/xampp/htdocs/laravel-blog/app/Admin.php",
+		"/d/xampp/htdocs/laravel-blog/config/auth.php",
+		"/d/xampp/htdocs/laravel-blog/database/migrations/2016_06_08_123041_create_posts_table.php",
+		"/d/xampp/htdocs/laravel-blog/database/migrations/2016_06_08_123107_create_categories_table.php",
+		"/d/xampp/htdocs/laravel-blog/database/migrations/2016_06_08_123140_create_contact_messages_table.php",
+		"/d/xampp/htdocs/laravel-blog/database/migrations/2016_06_08_123200_create_admins_table.php",
+		"/d/xampp/htdocs/laravel-blog/database/migrations/2016_06_08_123313_create_post_category_table.php",
+		"/D/xampp/htdocs/laravel-blog/resources/views/includes/info-box.blade.php",
+		"/D/xampp/htdocs/laravel-blog/resources/views/frontend/other/contact.blade.php",
+		"/d/xampp/htdocs/laravel-blog/resources/views/includes/header.blade.php",
+		"/C/cmder/vendor/clink-completions/npm_prompt.lua",
+		"/D/xampp/htdocs/laravel-blog/resources/views/frontend/other/about.blade.php",
+		"/D/xampp/htdocs/laravel-blog/resources/views/includes/footer.blade.php",
+		"/d/xampp/htdocs/laravel-blog/resources/views/layouts/master.blade.php",
+		"/D/xampp/htdocs/laravel-blog/resources/views/frontend/blog/single.blade.php",
+		"/C/cmder/vendor/clink-completions/npm.lua",
+		"/d/xampp/htdocs/laravel-blog/.env",
+		"/D/xampp/htdocs/laravel-blog/laravel-blog.sublime-project",
+		"/d/xampp/htdocs/laravel/resources/views/includes/header.blade.php",
+		"/D/xampp/htdocs/laravel/app/Http/Controllers/AdminController.php",
+		"/d/xampp/htdocs/laravel/app/Admin.php",
+		"/d/xampp/htdocs/laravel/app/Http/routes.php",
+		"/d/xampp/htdocs/laravel/app/Http/Controllers/QuoteController.php",
+		"/D/xampp/htdocs/laravel/resources/views/index.blade.php",
+		"/d/xampp/htdocs/laravel/resources/views/admin/login.blade.php",
+		"/D/xampp/htdocs/laravel/resources/views/admin/quotes.blade.php",
+		"/d/xampp/htdocs/laravel/app/Http/Middleware/Authenticate.php",
+		"/d/xampp/htdocs/laravel/resources/views/admin/dashboard.blade.php",
+		"/d/xampp/htdocs/laravel/database/seeds/AdminTableSeeder.php",
+		"/d/xampp/htdocs/laravel/config/auth.php",
+		"/D/xampp/htdocs/laravel/resources/views/admin/dashboard.blade.php",
+		"/C/Users/Edvardas/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/D/xampp/htdocs/laravel/resources/views/admin/login.blade.php",
+		"/d/xampp/htdocs/laravel/database/seeds/DatabaseSeeder.php",
+		"/C/Users/Edvardas/AppData/Roaming/Sublime Text 3/Packages/User/Laravel 5 Artisan.sublime-settings",
+		"/C/Users/Edvardas/AppData/Roaming/Sublime Text 3/Packages/AdvancedNewFile/AdvancedNewFile.sublime-settings",
+		"/d/xampp/htdocs/laravel/Controllers/AdminController.php",
+		"/C/Users/Edvardas/AppData/Roaming/Sublime Text 3/Packages/AdvancedNewFile/README.md",
+		"/d/xampp/htdocs/laravel/app/Events/QuoteCreated.php",
+		"/d/xampp/htdocs/laravel/app/Listeners/SendUserNotification.php",
+		"/d/xampp/htdocs/laravel/database/migrations/2016_06_06_163924_create_admins_table.php",
+		"/d/xampp/htdocs/laravel/resources/views/email/user_notification.blade.php",
+		"/D/xampp/htdocs/laravel/resources/views/email/callback.blade.php",
+		"/d/xampp/htdocs/laravel/app/AuthorLog.php",
+		"/D/xampp/htdocs/laravel/resources/views/email/user_notification.blade.php",
+		"/d/xampp/htdocs/laravel/database/migrations/2016_06_05_184053_create_author_logs_table.php",
+		"/d/xampp/htdocs/laravel/app/Listeners/CreateLogEntry.php",
+		"/d/xampp/htdocs/laravel/.env",
+		"/d/xampp/htdocs/laravel/app/Providers/EventServiceProvider.php",
+		"/d/xampp/htdocs/laravel/database/migrations/2016_06_01_144509_create_authors_table.php",
+		"/d/xampp/htdocs/laravel/public/src/css/main.css",
+		"/d/xampp/htdocs/laravel/app/QuoteLog.php",
+		"/d/xampp/htdocs/laravel/database/migrations/2016_06_05_165423_create_quote_logs_table.php",
+		"/d/xampp/htdocs/laravel/app/Quote.php",
+		"/d/xampp/htdocs/laravel/app/Author.php",
+		"/d/xampp/htdocs/laravel/database/migrations/2016_06_01_144603_create_quotes_table.php",
+		"/d/xampp/htdocs/laravel/app/Category.php",
+		"/d/xampp/htdocs/laravel/database/seeds/NiceActionSeeder.php",
+		"/D/xampp/htdocs/laravel/resources/views/home.blade.php",
+		"/d/xampp/htdocs/laravel/app/Http/Controllers/NiceActionController.php",
+		"/d/xampp/htdocs/laravel/app/NiceActionLog.php",
+		"/d/xampp/htdocs/laravel/app/NiceAction.php",
+		"/d/xampp/htdocs/laravel/database/migrations/2016_05_30_174356_categories_nice_actions.php",
+		"/d/xampp/htdocs/laravel/database/migrations/2016_05_30_174242_create_categories_table.php",
+		"/d/xampp/htdocs/laravel/database/migrations/2016_05_30_164554_create_nice_action_logs_table.php",
+		"/C/Users/Edvardas/AppData/Roaming/Sublime Text 3/Packages/User/phpcs.sublime-settings",
+		"/d/xampp/htdocs/laravel/resources/views/layouts/master.blade.php",
+		"/d/xampp/htdocs/laravel/database/migrations/2016_05_29_192354_create_nice_actions_table.php",
+		"/D/xampp/htdocs/laravel/package.json",
+		"/d/xampp/htdocs/laravel/database/migrations/2014_10_12_100000_create_password_resets_table.php",
+		"/D/xampp/htdocs/laravel/resources/views/actions/nice.blade.php",
+		"/D/xampp/htdocs/laravel/resources/views/actions/kiss.blade.php",
+		"/D/xampp/htdocs/laravel/resources/views/actions/greet.blade.php",
+		"/D/xampp/htdocs/laravel/resources/views/actions/hug.blade.php"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"email",
+			"event.path",
+			"categories",
+			"confirmation",
+			"textContent",
+			"innerText",
+			"text",
+			"posts",
+			"title",
+			"autocomple",
+			"Tech",
+			"		{{",
+			"fail",
+			"name",
+			"Name",
+			"name",
+			"();\n",
+			"contro",
+			"get",
+			"href",
+			"voluptatem",
+			"Iteration",
+			"{\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "aforizmai.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"contact-messages",
+				"public\\src\\js\\contact-messages.js"
+			],
+			[
+				"hel",
+				"_ide_helper.php"
+			],
+			[
+				"app",
+				"config\\app.php"
+			],
+			[
+				"config",
+				"vendor\\classpreloader\\classpreloader\\src\\Config.php"
+			],
+			[
+				"heade",
+				"resources\\views\\includes\\header.blade.php"
+			],
+			[
+				"dashb",
+				"resources\\views\\admin\\dashboard.blade.php"
+			],
+			[
+				"admin",
+				"app\\Admin.php"
+			],
+			[
+				"auth",
+				"config\\auth.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 738.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 285.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
