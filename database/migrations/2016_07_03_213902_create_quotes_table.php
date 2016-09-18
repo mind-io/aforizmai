@@ -14,10 +14,12 @@ class CreateQuotesTable extends Migration
     {
         Schema::create('quotes', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
             $table->text('quote');
+            $table->boolean('approved')->default(false);
             $table->integer('author_id')->unsigned();
             $table->integer('category_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->timestamps();
         });
     }
 

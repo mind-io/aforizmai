@@ -1,3 +1,4 @@
+
 /*Font awsome hoover*/
 
 * > .fa.fa-hover-show,
@@ -11,10 +12,29 @@
 
 /*Navbar*/
 
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+	.navbar-collapse img.avatar-img { 
+		width:32px; 
+		height:32px; 
+		position:absolute; 
+		top:5px; 
+		left:12px; 
+		border-radius:50%;
+	}
+}
+
+.avatar-img	{
+	width:36px; 
+	height:36px; 
+	position:absolute; 
+	top:12px; 
+	left:8px; 
+	border-radius:50%;
+}
+
 .navbar-brand {
   font-family: 'Kaushan Script', cursive;
-  /*font-family: 'Aladin', cursive;*/
-  /*font-family: 'Lobster', cursive;*/
   font-size:24px;
   padding: 0px 0px 6px 0px;
   display: flex;
@@ -26,15 +46,6 @@
   padding: 2px 10px; /* firefox bug fix */
   width: auto;
 }
-
-/*Table border*/
-
-
-.borderless tr td {
-    border: none !important;
-    padding: 5px !important;
-}
-
 
 /*Block quote*/
 
@@ -51,7 +62,7 @@ blockquote {
 	text-align:justify;
 	border-left:15px solid #2c3e50;
 	border-right:2px solid #2c3e50;
-	border-radius: 5px;
+	border-radius: 3px;
 	box-shadow:2px 2px 10px #ccc
 }
 
@@ -73,12 +84,19 @@ blockquote::after {
 
 blockquote a {
 	text-decoration:none;
-	font-style:italic
+	/*font-style:italic*/
 	/*color:#ffa133*/
+  transition: all .3s;
+  -moz-transition: all .3s; /* Firefox 4 */
+  -webkit-transition: all .3s; /* Safari and Chrome */
+  -o-transition: all .3s; /* Opera */
+
 }
 
-/*blockquote a:hover{color:#333}*/
-/*blockquote em{font-style:italic}*/
+blockquote a:hover {
+	text-decoration:none;
+	color:#333
+}
 
 blockquote p {
 	margin:0!important
@@ -95,7 +113,7 @@ blockquote cite:before {
 	content:"\2014 \2009";
 }
 
-blockquote:hover{
+blockquote:hover {
   background: #ecf0f1;
   /*color: #ffffff;*/
   
@@ -103,5 +121,5 @@ blockquote:hover{
   /*-moz-transition: all 1s; /* Firefox 4 */*/
   /*-webkit-transition: all 1s; /* Safari and Chrome */*/
   /*-o-transition: all 1s; /* Opera */*/
-
+}
 

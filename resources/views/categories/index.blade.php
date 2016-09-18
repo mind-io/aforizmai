@@ -9,12 +9,13 @@
     <div class="row">
         <div class="col-md-8">
             <div>
-                <h2>Aforizmai pagal temą <small>Subtext for header</small></h2>
+                <h2>Aforizmai pagal temą <small>(visos temos)</small></h2>
             </div>
             <div>
                 <ol class="breadcrumb" style="margin: 0px;">
                   <li><a href="{{ route('index') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                  <li class="active">Kategorijos</li>
+                  <li><a href="{{ route('categories.index') }}">Kategorijos</a></li>
+                  <li class="active">Visos</li>
                 </ol>
             </div>
             <div>
@@ -26,11 +27,11 @@
                             <a href="{{ route('categories.name', ['slug' => $quote->category->slug]) }}">{{ $quote->category->name }}</a>
                         </cite>
                         <p align="right">
-                            <a href="#">
+                            15<a href="#">
                                 <i class="fa fa-comment-o fa-hover-hidden fa-lg fa-fw"></i>
                                 <i class="fa fa-comment fa-hover-show fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Komentuoti..."></i>
-                            </a>
-                            <a href="#">
+                            </a>&nbsp;
+                            9<a href="#">
                                 <i class="fa fa-heart-o fa-hover-hidden fa-lg fa-fw"></i>
                                 <i class="fa fa-heart fa-hover-show fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Pridėti į kolekciją..."></i>
                             </a>
@@ -50,32 +51,36 @@
 
         <div class="col-md-4">
 
-            <div class="list-group">
-                <div class="list-group-item list-group-item-success">Aforizmų temos</div>
+{{--             <div class="list-group">
+                <div class="list-group-item list-group-item-success"><h4><strong>Aforizmų temos</strong></h4></div>
                 @foreach ($categories as $category)
-                    <a href="{{ route('categories.name', ['slug' => $category->slug]) }}" class="list-group-item list-group-item-info">
-                    <span class="badge">14</span>
-                    <h4 class="list-group-item-heading">{{ $category->name }}</h4>
-                    <p class="list-group-item-text">{{ $category->description }}</p></a>
+                    @if(count($category->quotes) > 0)
+                        <a href="{{ route('categories.name', ['slug' => $category->slug]) }}" class="list-group-item list-group-item-default">
+                        <span class="badge">{{ $category->quotes()->Approved()->count() }}</span>
+                        <h4 class="list-group-item-heading">{{ $category->name }}</h4>
+                        <p class="list-group-item-text">{{ $category->description }}</p></a>
+                    @endif
                 @endforeach
-            </div>
+            </div> --}}
 
-{{--             <div class="panel panel-success">
+            <div class="panel panel-success">
                 <div class="panel-heading">
                     <h4>Aforizmų temos</h4>
                 </div>
                 <div class="panel-body">
                     <div class="list-group">
                         @foreach ($categories as $category)
-                            <a href="{{ route('categories.name', ['slug' => $category->slug]) }}" class="list-group-item">
-                            <span class="badge">14</span>
-                            <h4 class="list-group-item-heading">{{ $category->name }}</h4>
-                            <p class="list-group-item-text">{{ $category->description }}</p></a>
+                            @if(count($category->quotes) > 0)
+                                <a href="{{ route('categories.name', ['slug' => $category->slug]) }}" class="list-group-item">
+                                <span class="badge">{{ $category->quotes()->Approved()->count() }}</span>
+                                <h4 class="list-group-item-heading">{{ $category->name }}</h4>
+                                <p class="list-group-item-text">{{ $category->description }}</p></a>
+                            @endif
                         @endforeach
                     </div>
                 </div>
             </div>
- --}}
+
         </div>
     </div>
 </div>

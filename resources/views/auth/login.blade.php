@@ -8,6 +8,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            <br>
             <div class="panel panel-default">
                 <div class="panel-heading">Įveskite prisijungimo duomenis:</div>
                 <div class="panel-body">
@@ -58,7 +59,9 @@
                                     <i class="fa fa-btn fa-sign-in"></i> Prisijungti
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Užmiršote savo slaptažodį?</a>
+                                <br><br>
+                                <a class="btn btn-default btn-xs" href="{{ url('/password/reset') }}"><i class="fa fa-key" aria-hidden="true"></i> Užmiršai savo slaptažodį?</a>&nbsp;
+                                <a class="btn btn-default btn-xs" href="{{ url('/register') }}"><i class="fa fa-btn fa-user-plus"></i>  Neturi paskyros?</a>
                             </div>
                         </div>
                     </form>

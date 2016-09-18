@@ -20,12 +20,12 @@
             </blockquote>
         @endforeach
     </div>
-    <div>
+{{--     <div>
         <nav>
             <ul class="pagination">
                 {{ $quotes->links() }}
             </ul>
         </nav>
     </div>
-
+ --}}
 </div><!-- /Tab "news" -->

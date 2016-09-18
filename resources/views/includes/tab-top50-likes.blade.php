@@ -45,8 +45,8 @@
                             <cite><a href="">Someone famous</a> | <a href="#">Category</a></cite>
                                 <div class="text-right">
                                     <div class="btn-group btn-group-xs" role="group">
-                                        <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Balsuok UŽ"><i class="fa fa-thumbs-up"></i></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Balsuok PRIEŠ"><i class="fa fa-thumbs-down"></i></button>
+                                        <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Balsuok UŽ"><i class="fa fa-thumbs-o-up fa-lg"></i></button>
+                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Balsuok PRIEŠ"><i class="fa fa-thumbs-o-down fa-lg"></i></button>
                                         <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Balsų kiekis">Likes <span class="badge">42</span></button>
                                     </div>
                                 </div>
