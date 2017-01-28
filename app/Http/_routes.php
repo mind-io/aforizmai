@@ -76,7 +76,7 @@ Route::get('/csv', [
 	'as' => 'csv.import'
 ]);
 
-Route::auth();
+Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {
 

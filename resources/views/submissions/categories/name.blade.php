@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-8">
             <div>
-                <h2>{{ $slug->name }} <small>({{ $slug->description }})</small></h2>
+                <h2>{{ $slug->name }} <br><small>{{ $slug->description }}</small></h2>
             </div>
             <div>
                 <ol class="breadcrumb" style="margin: 0px;">
@@ -47,23 +47,35 @@
                     </ul>
                 </nav>
             </div>
-        </div>
+        </div>{{-- /col-md-8 --}}
 
         <div class="col-md-4">
 
-            <div class="list-group">
-                <div class="list-group-item list-group-item-info"><h4><strong>Aforizmų temos</strong></h4></div>
-                @foreach ($categories as $category)
-                    @if(count($category->quotes) > 0)
-                        <a href="{{ route('submissions.categories.name', ['slug' => $category->slug]) }}" class="list-group-item list-group-item-default">
-                        <span class="badge">{{ $category->quotes()->NotApproved()->count() }}</span>
-                        <h4 class="list-group-item-heading">{{ $category->name }}</h4>
-                        <p class="list-group-item-text">{{ $category->description }}</p></a>
-                    @endif
-                @endforeach
-            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4>Aforizmų temos</h4>
+                </div>            
+                <div class="panel-body">
+                    <div class="list-group">
+                        @foreach ($categories as $category)
+                            @if(count($category->quotes) > 0)
+                                <a href="{{ route('submissions.categories.name', ['slug' => $category->slug]) }}" 
+                                    @if (Request::segment(3) == $category->slug)
+                                        class="list-group-item list-group-item-info"
+                                    @else
+                                        class="list-group-item list-group-item-default"
+                                    @endif
+                                >
+                                <span class="badge">{{ $category->quotes()->NotApproved()->count() }}</span>
+                                <h4 class="list-group-item-heading">{{ $category->name }}</h4>
+                                <p class="list-group-item-text">{{ $category->description }}</p></a>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+            </div>{{-- /panel --}}
 
-        </div>
-    </div>
+        </div>{{-- /col-md-4 --}}
+    </div>{{-- /row --}}
 </div>
 @endsection

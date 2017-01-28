@@ -22,7 +22,7 @@ class CategoryTableSeeder extends Seeder
 
         $category = new Category();
         $category->name = "Jausmai";
-        $category->description = "Meilė, abejingumas, neapykanta, aistra bei kiti jausmai ar emocijos";
+        $category->description = "Meilė, draugystė, aistra, neapykanta, abejingumas, vienatvė bei kiti jausmai ar emocijos";
         $category->slug = "jausmai";
         $category->save();
 

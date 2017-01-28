@@ -16,7 +16,7 @@
             <div>
                 <h2>Aforizmų atranka į oficialią kolekciją</h2>
             </div>
-            <div class="alert alert-success alert-dismissible" role="alert">
+            <div class="alert alert-info alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <i class="fa fa-lg fa-fw fa-info-circle" aria-hidden="true"></i>
                 <strong>Warning!</strong><br>
@@ -45,45 +45,49 @@
                             <p align="right" data-quoteid="{{ $quote->id }}">
 
                                 @if(Auth::user()) {{-- is user --}}
-{{--                                 <a href="#" class="like">{{ Auth::user()->likes()->where('quote_id', $quote->id)->first() ? Auth::user()->likes()->where('quote_id', $quote->id)->first()->like === 1 ? 'You like this Quote' : 'Like' : 'Like' }}</a>
-                                <span class="badge like-badge">{{ $quote->likes()->sum('like') }}</span>
-                                <a href="#" class="dislike">{{ Auth::user()->likes()->where('quote_id', $quote->id)->first() ? Auth::user()->likes()->where('quote_id', $quote->id)->first()->like === -1 ? 'You dislike this Quote' : 'Dislike' : 'Dislike' }}</a> --}}
+                                    {{-- <a href="#" class="like">{{ Auth::user()->likes()->where('quote_id', $quote->id)->first() ? Auth::user()->likes()->where('quote_id', $quote->id)->first()->like === 1 ? 'You like this Quote' : 'Like' : 'Like' }}</a>
+                                    <span class="badge like-badge">{{ $quote->likes()->sum('like') }}</span>
+                                    <a href="#" class="dislike">{{ Auth::user()->likes()->where('quote_id', $quote->id)->first() ? Auth::user()->likes()->where('quote_id', $quote->id)->first()->like === -1 ? 'You dislike this Quote' : 'Dislike' : 'Dislike' }}</a> --}}
 
                                     {{-- Checking if user has voted --}}
                                     @if(Auth::user()->likes()->where('quote_id', $quote->id)->first() )
+
                                         {{-- user LIKED the quote     --}}
                                         @if(Auth::user()->likes()->where('quote_id', $quote->id)->first()->like === 1)
                                             <a href="#" class="like active">
-                                                <i class="thumbs-up fa fa-thumbs-up fa-lg fa-fw" style="color: #18bc9c;" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Man jau Patinka!"></i>
+                                                <i class="fa fa-thumbs-up fa-lg fa-fw" style="color: #18bc9c;" aria-hidden="true"></i>
                                             </a>
                                             <span class="badge likes">{{ $quote->likes()->sum('like') }}</span>
                                             <a href="#" class="dislike">
                                                 <i class="fa fa-thumbs-o-down fa-lg fa-hover-hidden fa-fw" aria-hidden="true"></i>
-                                                <i class="fa fa-thumbs-down fa-lg fa-hover-show fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Persigalvojai? Balsuok Nepatinka!"></i>
+                                                {{-- <i class="fa fa-thumbs-down fa-lg fa-hover-show fa-fw" aria-hidden="true"></i> --}}
                                             </a>
+
                                         {{-- user DISLIKED the quote --}}
                                         @else
                                             <a href="#" class="like">
-                                                <i class="thumbs-up fa fa-thumbs-o-up fa-lg fa-hover-hidden fa-fw" aria-hidden="true"></i>
-                                                <i class="thumbs-up fa fa-thumbs-up fa-lg fa-hover-show fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Persigalvojai? Balsuok Patinka!"></i>
+                                                <i class="fa fa-thumbs-o-up fa-lg fa-hover-hidden fa-fw" aria-hidden="true"></i>
+                                                {{-- <i class="fa fa-thumbs-up fa-lg fa-hover-show fa-fw" aria-hidden="true"></i> --}}
                                             </a>
                                             <span class="badge likes">{{ $quote->likes()->sum('like') }}</span>
                                             <a href="#" class="dislike active">
-                                                <i class="fa fa-thumbs-down fa-lg fa-fw" style="color: #e74c3c;" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Man jau Nepatinka!"></i>
+                                                <i class="fa fa-thumbs-down fa-lg fa-fw" style="color: #e74c3c;" aria-hidden="true"></i>
                                             </a>
                                         @endif
+
                                     {{-- user has no vote --}}
                                     @else
                                         <a href="#" class="like">
-                                            <i class="thumbs-up fa fa-thumbs-o-up fa-lg fa-hover-hidden fa-fw" aria-hidden="true"></i>
-                                            <i class="thumbs-up fa fa-thumbs-up fa-lg fa-hover-show fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Balsuok Patinka!"></i>
+                                            <i class="fa fa-thumbs-o-up fa-lg fa-hover-hidden fa-fw" aria-hidden="true"></i>
+                                            {{-- <i class="fa fa-thumbs-up fa-lg fa-hover-show fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Balsuok Patinka!"></i> --}}
                                         </a>
                                         <span class="badge likes">{{ $quote->likes()->sum('like') }}</span>
                                         <a href="#" class="dislike">
-                                            <i class="thumbs-down fa fa-thumbs-o-down fa-lg fa-hover-hidden fa-fw" aria-hidden="true"></i>
-                                            <i class="thumbs-down fa fa-thumbs-down fa-lg fa-hover-show fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Balsuok Nepatinka!"></i>
+                                            <i class="fa fa-thumbs-o-down fa-lg fa-hover-hidden fa-fw" aria-hidden="true"></i>
+                                            {{-- <i class="fa fa-thumbs-down fa-lg fa-hover-show fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Balsuok Nepatinka!"></i> --}}
                                         </a>
                                     @endif
+
                                 @else {{-- not a user --}}
                                     <div class="text-right">
                                         <div class="btn-group btn-group-xs" role="group">
@@ -110,17 +114,23 @@
 
         <div class="col-md-4">
 
-            <div class="list-group">
-                <div class="list-group-item list-group-item-info"><h4><strong>Aforizmų temos</strong></h4></div>
-                @foreach ($categories as $category)
-                    @if(count($category->quotes) > 0)
-                        <a href="{{ route('submissions.categories.name', ['slug' => $category->slug]) }}" class="list-group-item list-group-item-default">
-                        <span class="badge">{{ $category->quotes()->NotApproved()->count() }}</span>
-                        <h4 class="list-group-item-heading">{{ $category->name }}</h4>
-                        <p class="list-group-item-text">{{ $category->description }}</p></a>
-                    @endif
-                @endforeach
-            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4>Aforizmų temos</h4>
+                </div>           
+                <div class="panel-body">
+                    <div class="list-group">
+                        @foreach ($categories as $category)
+                            @if(count($category->quotes) > 0)
+                                <a href="{{ route('submissions.categories.name', ['slug' => $category->slug]) }}" class="list-group-item list-group-item-default">
+                                <span class="badge">{{ $category->quotes()->NotApproved()->count() }}</span>
+                                <h4 class="list-group-item-heading">{{ $category->name }}</h4>
+                                <p class="list-group-item-text">{{ $category->description }}</p></a>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+            </div>{{-- /panel --}}
 
             <div class="well">
                 <form class="form" method="POST" action="{{ route('submissions.authors.select') }}">
@@ -142,7 +152,7 @@
                         @endif
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">
-                        <i class="fa fa-filter"></i> Filtruoti
+                        <i class="fa fa-fw fa-filter"></i> Filtruoti
                     </button>
                 </form>
             </div>{{-- /well --}}

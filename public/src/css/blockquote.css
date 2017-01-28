@@ -1,3 +1,6 @@
+/*body {
+  background: #ecf0f1;
+}*/
 
 /*Font awsome hoover*/
 
@@ -86,10 +89,10 @@ blockquote a {
 	text-decoration:none;
 	/*font-style:italic*/
 	/*color:#ffa133*/
-  transition: all .3s;
-  -moz-transition: all .3s; /* Firefox 4 */
-  -webkit-transition: all .3s; /* Safari and Chrome */
-  -o-transition: all .3s; /* Opera */
+  /*transition: all .3s;*/
+  /*-moz-transition: all .3s; /* Firefox 4 */*/
+  /*-webkit-transition: all .3s; /* Safari and Chrome */*/
+  /*-o-transition: all .3s; /* Opera */*/
 
 }
 

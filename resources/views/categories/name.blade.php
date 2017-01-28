@@ -46,7 +46,7 @@
                     </ul>
                 </nav>
             </div>
-        </div>
+        </div>{{-- /col-md-8 --}}
 
         <div class="col-md-4">
             <div class="panel panel-success">
@@ -57,7 +57,13 @@
                     <div class="list-group">
                         @foreach ($categories as $category)
                             @if(count($category->quotes) > 0)
-                                <a href="{{ route('categories.name', ['slug' => $category->slug]) }}" class="list-group-item">
+                                <a href="{{ route('categories.name', ['slug' => $category->slug]) }}" 
+                                    @if (Request::segment(2) == $category->slug)
+                                        class="list-group-item list-group-item-success"
+                                    @else
+                                        class="list-group-item list-group-item-default"
+                                    @endif
+                                >
                                 <span class="badge">{{ $category->quotes()->Approved()->count() }}</span>
                                 <h4 class="list-group-item-heading">{{ $category->name }}</h4>
                                 <p class="list-group-item-text">{{ $category->description }}</p></a>
@@ -65,9 +71,9 @@
                         @endforeach
                     </div>
                 </div>
-            </div>
+            </div>{{-- /panel --}}
 
-        </div>
+        </div>{{-- /col-md-4 --}}
     </div>
 </div>
 @endsection

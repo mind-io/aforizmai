@@ -74,7 +74,7 @@
                         @endif
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">
-                        <i class="fa fa-filter"></i> Filtruoti
+                        <i class="fa fa-fw fa-filter"></i> Filtruoti
                     </button>
                 </form>
             </div>{{-- /well --}}

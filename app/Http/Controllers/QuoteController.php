@@ -8,6 +8,7 @@ use App\Category;
 use App\Like;
 use App\User;
 use App\Events\LikeEvent;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
@@ -20,6 +21,12 @@ class QuoteController extends Controller
     {
         $categories = Category::orderBy('id', 'asc')->get();
         return view('submissions.create', ['categories' => $categories]);
+    }
+
+    public function getAuthorAutocomplete(Request $request)
+    {
+        $data = Author::select("name")->where("name","LIKE","%{$request->input('query')}%")->get();
+        return response()->json($data);
     }
 
     public function submitQuote(Request $request)
@@ -71,7 +78,7 @@ class QuoteController extends Controller
             $like_status = true;
             if ($already_like == $is_like) {
                 $like->delete();
-                return Response::json(['message' => 'Balsas atšauktas.'], 200);
+                return Response::json(['message' => 'Balsas atšauktas!'], 200);
             }
         } else {
             $like = new Like();

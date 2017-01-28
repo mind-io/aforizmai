@@ -52,7 +52,7 @@
                             <div class="col-md-12 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <div class="form-group has-feedback">
                                     <label for="name" class="control-label">Autoriaus vardas</label>
-                                    <input id="name" type="text" class="form-control" name="name" placeholder="Vardas Pavardė (jeigu nežinomi - Anonimas, Liaudies išmintis ar pan.)" value="{{ old('name') }}">
+                                    <input id="name" type="text" class="typeahead form-control" name="name" autocomplete="off" placeholder="Vardas Pavardė (jeigu nežinomi - Anonimas, Liaudies išmintis ar pan.)" value="{{ old('name') }}">
                                     <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -68,9 +68,14 @@
                                 <div>
                                     <label for="category_id" class="control-label">Kategoroja</label>
                                     <select id="category_id" class="form-control" name="category_id">
-                                        <option><< Pasirinkite kategoriją >></option>
+                                        {{-- &#10148; &#9745; --}}
+                                        <option disabled selected>&#10148; Kategorijos pasirinkimas . . . </option>
                                         @foreach ($categories as $category)
-                                            <option value={{ $category->id }}>{{ $category->name }}</option>
+                                            @if (old('category_id') == $category->id)
+                                                  <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                            @else
+                                                  <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endif                                   
                                         @endforeach
                                     </select>
                                     @if ($errors->has('category_id'))
@@ -86,7 +91,7 @@
                             <div class="form-group{{ $errors->has('quote') ? ' has-error' : '' }}">
                                 <div class="col-md-12">
                                     <label for="quote" class="control-label">Aforizmo tekstas</label>
-                                    <textarea name="quote" id="quote" rows="6" class="form-control" name="quote" placeholder="Aforizmo tekstas (be kabučių)">{{ old('quote') }}</textarea>
+                                    <textarea name="quote" id="quote" rows="6" class="form-control" name="quote" placeholder="Aforizmo tekstas be kabučių">{{ old('quote') }}</textarea>
                                     @if ($errors->has('quote'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('quote') }}</strong>
@@ -124,4 +129,18 @@
         </div>{{-- /col-md-8 col-md-offset-2 --}}
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+    <script type="text/javascript">
+        var path = "{{ route('submissions.authors.autocomplete') }}";
+        $('input.typeahead').typeahead({
+            source:  function (query, process) {
+            return $.get(path, { query: query }, function (data) {
+                    return process(data);
+                });
+            }
+        });
+    </script>
 @endsection

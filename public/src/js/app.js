@@ -1,19 +1,25 @@
-$(document).on('click', ".like", function(event) {
+// $(document).on('click', ".like", function(event) {
+$('.like').on('click', function(event) {
 	event.preventDefault();
 	quoteId = event.target.parentNode.parentNode.dataset['quoteid'];
 	var isLike = 1;
-	// var $thumb = $(this).find('i.fa');
 
-	console.log(isLike);
-	// console.log($thumb);
-	
-	$.ajax({
+		$.ajax({
 		method: 'POST',
 		url: urlLike,
 		data: {isLike: isLike, quoteId: quoteId, _token: token}
-	})
+		})
 		.done(function() {
-			$('.thumbs-up').toggleClass('fa-thumbs-o-up fa-thumbs-up');
+			// $('#quote_' + quoteId).click(function() {
+			// 	$(this).find('.thumbs-up').toggleClass('fa-thumbs-o-up fa-thumbs-up')
+			// });
+			// $('.thumbs-up').toggleClass('fa-thumbs-o-up fa-thumbs-up');
+			console.log(isLike);
+			if( $(event.target).hasClass("fa-thumbs-o-up")) {
+				$(event.target).removeClass("fa-thumbs-o-up").addClass("fa-thumbs-up");
+			} else {
+				$(event.target).removeClass("fa-thumbs-up").addClass("fa-thumbs-o-up");
+			}
 		
    //          event.target.innerText = isLike ? event.target.innerText == 'Like' ? 'You like this Quote' : 'Like' : event.target.innerText == 'Dislike' ? 'You don\'t like this Quote' : 'Dislike';
    //          if (isLike) {
