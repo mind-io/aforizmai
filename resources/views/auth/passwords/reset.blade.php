@@ -10,10 +10,10 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
         <br>
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Slaptažodžio keitimas</div>
 
-                <div class="panel-body">
+                <div class="panel-body" style="padding-top: 30px;">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
                         {{ csrf_field() }}
 
@@ -63,7 +63,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-refresh"></i> Keisti slaptažodį
+                                    <i class="fa fa-btn fa-refresh fa-fw"></i> Keisti slaptažodį
                                 </button>
                             </div>
                         </div>

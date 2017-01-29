@@ -12,9 +12,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8" style="padding-left: 30px;">
             <div>
-                <h2>Aforizmai pagal autorių <small>Subtext for header</small></h2>
+                <h3>Aforizmai pagal autorių <small>(visi autoriai)</small></h3>
             </div>
             <div>
                 <ol class="breadcrumb" style="margin: 0px;">
@@ -53,8 +53,8 @@
             </div>
         </div>{{-- /col-md-8 --}}
 
-        <div class="col-md-4">
-            <div class="well">
+        <div class="col-md-4" style="padding-left: 30px; margin-top:10.5px;">
+            <div >
                 <form class="form" method="POST" action="{{ route('authors.select') }}">
                 {{ csrf_field() }}
                     <div class="form-group input-group-lg {{ $errors->has('author_id') ? ' has-error' : '' }}">
@@ -73,9 +73,12 @@
                             </span>
                         @endif
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">
-                        <i class="fa fa-fw fa-filter"></i> Filtruoti
-                    </button>
+                    <div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fa fa-fw fa-filter"></i> Filtruoti
+                        </button>
+                        <br>
+                    </div>
                 </form>
             </div>{{-- /well --}}
         </div>{{-- /col-md-4 --}}

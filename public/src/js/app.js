@@ -1,53 +1,63 @@
-// $(document).on('click', ".like", function(event) {
-$('.like').on('click', function(event) {
+$('.voteUp').on('click', function(event) {
 	event.preventDefault();
 	quoteId = event.target.parentNode.parentNode.dataset['quoteid'];
-	var isLike = 1;
+	var isVote = 1;
 
 		$.ajax({
 		method: 'POST',
-		url: urlLike,
-		data: {isLike: isLike, quoteId: quoteId, _token: token}
+		url: urlVote,
+		data: {isVote: isVote, quoteId: quoteId, _token: token}
 		})
 		.done(function() {
-			// $('#quote_' + quoteId).click(function() {
-			// 	$(this).find('.thumbs-up').toggleClass('fa-thumbs-o-up fa-thumbs-up')
-			// });
-			// $('.thumbs-up').toggleClass('fa-thumbs-o-up fa-thumbs-up');
-			console.log(isLike);
-			if( $(event.target).hasClass("fa-thumbs-o-up")) {
-				$(event.target).removeClass("fa-thumbs-o-up").addClass("fa-thumbs-up");
-			} else {
-				$(event.target).removeClass("fa-thumbs-up").addClass("fa-thumbs-o-up");
+			console.log("isVote" + ' ' + isVote);
+			votes = parseInt($(event.target.parentNode.nextElementSibling).text());
+
+			if($(event.target).hasClass('fa-thumbs-o-up')) {
+
+				if($(event.target.parentNode.nextElementSibling.nextElementSibling.children).hasClass("fa-thumbs-down")) {
+					$(event.target.parentNode.nextElementSibling.nextElementSibling.children).toggleClass('fa-thumbs-down fa-thumbs-o-down')
+					$(event.target.parentNode.nextElementSibling).text(votes+2);
+				}
+				$(event.target).toggleClass('fa-thumbs-o-up fa-thumbs-up');
+				$(event.target.parentNode.nextElementSibling).text(votes-1);
 			}
-		
-   //          event.target.innerText = isLike ? event.target.innerText == 'Like' ? 'You like this Quote' : 'Like' : event.target.innerText == 'Dislike' ? 'You don\'t like this Quote' : 'Dislike';
-   //          if (isLike) {
-   //              event.target.nextElementSibling.nextElementSibling.innerText = 'Dislike';
-   //          } else {
-   //              event.target.previousElementSibling.previousElementSibling.innerText = 'Like';
-			// }		
+
+			$(event.target).toggleClass('fa-thumbs-up fa-thumbs-o-up');
+			$(event.target.parentNode.nextElementSibling).text(votes+1);
+ 
+			
 		});
+
 });
 
-$('.dislike').on('click', function(event) {
+$('.voteDown').on('click', function(event) {
 	event.preventDefault();
 	quoteId = event.target.parentNode.parentNode.dataset['quoteid'];
-	var isLike = -1;
-	console.log(isLike);
+	var isVote = -1;
 	$.ajax({
 		method: 'POST',
-		url: urlLike,
-		data: {isLike: isLike, quoteId: quoteId, _token: token}
+		url: urlVote,
+		data: {isVote: isVote, quoteId: quoteId, _token: token}
 	})
 		.done(function() {
-			$('.thumbs-down').toggleClass('fa-thumbs-o-down fa-thumbs-down');
+			console.log("isVote" + ' ' + isVote);
+			votes = parseInt($(event.target.parentNode.previousElementSibling).text());
+			$(event.target).toggleClass('fa-thumbs-o-down fa-thumbs-down');
+			if($(event.target.parentNode.previousElementSibling.previousElementSibling.children).hasClass("fa-thumbs-up")) {
 
-   //          event.target.innerText = isLike ? event.target.innerText == 'Dislike' ? 'You don\'t like this Quote' : 'Dislike' : event.target.innerText == 'Like' ? 'You like this Quote' : 'Like';
-   //          if (isLike) {
+				$(event.target.parentNode.previousElementSibling.previousElementSibling.children).toggleClass('fa-thumbs-up fa-thumbs-o-up')
+				$(event.target.parentNode.previousElementSibling).text(votes-2);
+				// console.log(votes);
+
+			}
+			$(event.target.parentNode.previousElementSibling).text(votes-1);
+			// console.log(votes);
+
+   //          event.target.innerText = isVote ? event.target.innerText == 'DisVote' ? 'You don\'t like this Quote' : 'DisVote' : event.target.innerText == 'Like' ? 'You like this Quote' : 'Like';
+   //          if (isVote) {
    //              event.target.previousElementSibling.previousElementSibling.innerText = 'Like';
    //          } else {
-   //              event.target.nextElementSibling.nextElementSibling.innerText = 'Dislike';
+   //              event.target.nextElementSibling.nextElementSibling.innerText = 'DisVote';
 			// }		
 		});
 });

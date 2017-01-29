@@ -10,9 +10,9 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
         <br>
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Slaptažodžio keitimas</div>
-                <div class="panel-body">
+                <div class="panel-body" style="padding-top: 30px;">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
@@ -39,7 +39,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-envelope"></i> Siųsti slaptažodžio keitimo nuorodą
+                                    <i class="fa fa-btn fa-envelope fa-fw"></i> Siųsti slaptažodžio keitimo nuorodą
                                 </button>
                             </div>
                         </div>

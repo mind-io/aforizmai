@@ -21,8 +21,8 @@
         </div>
     </div>
 </div> --}}
-
-<div class="container" style="padding-top: 30px;">
+<br>
+<div class="container" style="padding-top: 10px; ">
     {{-- <h2 class="page-header text-center">Mano profilis</h2> --}}
     <div class="row">
         <form class="form-horizontal" role="form" enctype="multipart/form-data" action="{{ route('user.profile.update') }}" method="POST">
@@ -44,11 +44,11 @@
                     <i class="fa fa-coffee"></i>
                     This is an <strong>.alert</strong>. Use this to show important messages to the user.
                 </div>
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Personal info</h3>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body" style="padding-top: 30px;">
                         {{-- <form class="form-horizontal" role="form"> --}}
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-3 control-label">Vardas:</label>

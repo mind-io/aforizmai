@@ -8,52 +8,44 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <br>
             <div>
-{{--                         @if(count($errors) > 0)
-                            <div class="alert alert-danger alert-dismissible" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                @foreach($errors->all() as $error)
-                                    {{$error}}
-                                @endforeach
-                            </div>
-                        @endif
- --}}                        
-                        @if(Session::has('success'))
-                            <div class="alert alert-success alert-dismissible" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <i class="fa fa-check-circle fa-lg fa-fw" aria-hidden="true"></i> 
-                                {{ Session::get('success') }}
-                                <strong>Atsiūsk dar</strong> arba balsuok už jau atsiūstus <a href="{{ route('submissions.index') }}" class="alert-link"><i class="fa fa-thumbs-up fa-lg fa-fw" aria-hidden="true"></i> <i class="fa fa-thumbs-down fa-lg fa-fw" aria-hidden="true"></i></a>
-                            </div>
-                        @endif
+{{--                 @if(count($errors) > 0)
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @foreach($errors->all() as $error)
+                            {{$error}}
+                        @endforeach
+                    </div>
+                @endif --}}
                 
+                @if(Session::has('success'))
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <i class="fa fa-check-circle fa-lg fa-fw" aria-hidden="true"></i> 
+                        {{ Session::get('success') }}
+                        <strong>Atsiūsk dar</strong> arba balsuok už jau atsiūstus <a href="{{ route('submissions.index') }}" class="alert-link"><i class="fa fa-thumbs-up fa-lg fa-fw" aria-hidden="true"></i> <i class="fa fa-thumbs-down fa-lg fa-fw" aria-hidden="true"></i></a>
+                    </div>
+                @endif
             </div>
+
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4><i class="fa fa-plus-square fa-fw" aria-hidden="true"></i> Pridėti naują aforizmą: &nbsp;<span class="label label-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Tik registruotiems vartotojams</span></h4>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" style="padding-left: 20px; padding-right: 20px;">
                     <form class="form" role="form" method="POST" action="{{ route('submissions.store') }}">
-                        {{ csrf_field() }}
+                    {{ csrf_field() }}
 
-{{-- <div class="form-group">
-  <label class="control-label">Input addons</label>
-  <div class="input-group">
-    <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
-    <input class="form-control" type="text">
-    <span class="input-group-btn">
-      <button class="btn btn-default" type="button">Button</button>
-    </span>
-  </div>
-</div> --}}
                         <div class="row">
-                            <div class="col-md-12 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <div class="form-group has-feedback">
+                            <div class="col-md-6 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                <div class="form-group">
                                     <label for="name" class="control-label">Autoriaus vardas</label>
-                                    <input id="name" type="text" class="typeahead form-control" name="name" autocomplete="off" placeholder="Vardas Pavardė (jeigu nežinomi - Anonimas, Liaudies išmintis ar pan.)" value="{{ old('name') }}">
-                                    <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-search fa-fw" aria-hidden="true"></i></span>
+                                        <input id="name" type="text" class="typeahead form-control" name="name" autocomplete="off" placeholder="Vardas Pavardė (jeigu nežinomi - Anonimas, Liaudies išmintis ar pan.)" value="{{ old('name') }}">
+                                    </div>
                                     @if ($errors->has('name'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('name') }}</strong>
@@ -61,23 +53,25 @@
                                     @endif
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">                            
-                            <div class="col-md-12 form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
+                            <div class="col-md-6 form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                                 <div>
                                     <label for="category_id" class="control-label">Kategoroja</label>
-                                    <select id="category_id" class="form-control" name="category_id">
-                                        {{-- &#10148; &#9745; --}}
-                                        <option disabled selected>&#10148; Kategorijos pasirinkimas . . . </option>
-                                        @foreach ($categories as $category)
-                                            @if (old('category_id') == $category->id)
-                                                  <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
-                                            @else
-                                                  <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                            @endif                                   
-                                        @endforeach
-                                    </select>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-list fa-fw" aria-hidden="true"></i></span>
+                                        <select id="category_id" class="form-control" name="category_id">
+                                            {{-- &#10148; &#9745; --}}
+                                            <option disabled selected>Kategorijos pasirinkimas . . . </option>
+                                            @foreach ($categories as $category)
+                                                @if (old('category_id') == $category->id)
+                                                      <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                                @else
+                                                      <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endif                                   
+                                            @endforeach
+                                        </select>
+                                        
+                                    </div>
                                     @if ($errors->has('category_id'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('category_id') }}</strong>

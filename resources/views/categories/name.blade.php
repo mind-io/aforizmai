@@ -7,9 +7,12 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8" style="padding-left: 30px;">
             <div>
-                <h2>{{ $slug->name }} <br><small>{{ $slug->description }}</small></h2>
+                <h3>{{ $slug->name }} 
+                    <span class="badge">&nbsp;Aforizmų: {{ $slug->quotes()->Approved()->count() }}&nbsp;</span>
+                    <br><small>{{ $slug->description }}</small>
+                </h3>
             </div>
             <div>
                 <ol class="breadcrumb" style="margin: 0px;">
@@ -48,7 +51,7 @@
             </div>
         </div>{{-- /col-md-8 --}}
 
-        <div class="col-md-4">
+        <div class="col-md-4" style="padding-left: 30px; margin-top:21px;">
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <h4>Aforizmų temos</h4>

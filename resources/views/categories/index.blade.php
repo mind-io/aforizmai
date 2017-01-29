@@ -7,9 +7,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8" style="padding-left: 30px;">
             <div>
-                <h2>Aforizmai pagal temą <small>(visos temos)</small></h2>
+                <h3>Aforizmai pagal temą <small>(visos temos)</small></h3>
             </div>
             <div>
                 <ol class="breadcrumb" style="margin: 0px;">
@@ -48,8 +48,7 @@
             </div>
         </div>
 
-
-        <div class="col-md-4">
+        <div class="col-md-4" style="padding-left: 30px; margin-top:21px;">
 
 {{--             <div class="list-group">
                 <div class="list-group-item list-group-item-success"><h4><strong>Aforizmų temos</strong></h4></div>

@@ -21,7 +21,7 @@
                 <i class="fa fa-lg fa-fw fa-info-circle" aria-hidden="true"></i>
                 <strong>Warning!</strong><br>
                 Better check yourself, you're not looking too good. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <a href="#" class="alert-link">tempor incididunt</a>
-                ut labore et dolore <span class="badge likes">20</span> magna aliqua. Ut enim ad minim veniam,
+                ut labore et dolore <span class="badge votes">20</span> magna aliqua. Ut enim ad minim veniam,
                 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                 consequat.
             </div>
@@ -45,53 +45,49 @@
                             <p align="right" data-quoteid="{{ $quote->id }}">
 
                                 @if(Auth::user()) {{-- is user --}}
-                                    {{-- <a href="#" class="like">{{ Auth::user()->likes()->where('quote_id', $quote->id)->first() ? Auth::user()->likes()->where('quote_id', $quote->id)->first()->like === 1 ? 'You like this Quote' : 'Like' : 'Like' }}</a>
-                                    <span class="badge like-badge">{{ $quote->likes()->sum('like') }}</span>
-                                    <a href="#" class="dislike">{{ Auth::user()->likes()->where('quote_id', $quote->id)->first() ? Auth::user()->likes()->where('quote_id', $quote->id)->first()->like === -1 ? 'You dislike this Quote' : 'Dislike' : 'Dislike' }}</a> --}}
+                                    {{-- <a href="#" class="vote">{{ Auth::user()->votes()->where('quote_id', $quote->id)->first() ? Auth::user()->votes()->where('quote_id', $quote->id)->first()->vote === 1 ? 'You vote this Quote' : 'vote' : 'vote' }}</a>
+                                    <span class="badge vote-badge">{{ $quote->votes()->sum('vote') }}</span>
+                                    <a href="#" class="disvote">{{ Auth::user()->votes()->where('quote_id', $quote->id)->first() ? Auth::user()->votes()->where('quote_id', $quote->id)->first()->vote === -1 ? 'You disvote this Quote' : 'Disvote' : 'Disvote' }}</a> --}}
 
                                     {{-- Checking if user has voted --}}
-                                    @if(Auth::user()->likes()->where('quote_id', $quote->id)->first() )
+                                    @if(Auth::user()->votes()->where('quote_id', $quote->id)->first() )
 
-                                        {{-- user LIKED the quote     --}}
-                                        @if(Auth::user()->likes()->where('quote_id', $quote->id)->first()->like === 1)
-                                            <a href="#" class="like active">
-                                                <i class="fa fa-thumbs-up fa-lg fa-fw" style="color: #18bc9c;" aria-hidden="true"></i>
+                                        {{-- user voted UP the quote     --}}
+                                        @if(Auth::user()->votes()->where('quote_id', $quote->id)->first()->vote === 1)
+                                            <a href="#" class="voteUp active">
+                                                <i class="fa fa-thumbs-up fa-lg fa-fw" aria-hidden="true"></i>
                                             </a>
-                                            <span class="badge likes">{{ $quote->likes()->sum('like') }}</span>
-                                            <a href="#" class="dislike">
-                                                <i class="fa fa-thumbs-o-down fa-lg fa-hover-hidden fa-fw" aria-hidden="true"></i>
-                                                {{-- <i class="fa fa-thumbs-down fa-lg fa-hover-show fa-fw" aria-hidden="true"></i> --}}
+                                            <span class="badge votecount">{{ $quote->votes()->sum('vote') }}</span>
+                                            <a href="#" class="voteDown">
+                                                <i class="fa fa-thumbs-o-down fa-lg fa-fw" aria-hidden="true"></i>
                                             </a>
 
-                                        {{-- user DISLIKED the quote --}}
+                                        {{-- user voted DOWN the quote --}}
                                         @else
-                                            <a href="#" class="like">
-                                                <i class="fa fa-thumbs-o-up fa-lg fa-hover-hidden fa-fw" aria-hidden="true"></i>
-                                                {{-- <i class="fa fa-thumbs-up fa-lg fa-hover-show fa-fw" aria-hidden="true"></i> --}}
+                                            <a href="#" class="voteUp">
+                                                <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i>
                                             </a>
-                                            <span class="badge likes">{{ $quote->likes()->sum('like') }}</span>
-                                            <a href="#" class="dislike active">
-                                                <i class="fa fa-thumbs-down fa-lg fa-fw" style="color: #e74c3c;" aria-hidden="true"></i>
+                                            <span class="badge votecount">{{ $quote->votes()->sum('vote') }}</span>
+                                            <a href="#" class="voteDown active">
+                                                <i class="fa fa-thumbs-down fa-lg fa-fw" aria-hidden="true"></i>
                                             </a>
                                         @endif
 
                                     {{-- user has no vote --}}
                                     @else
-                                        <a href="#" class="like">
-                                            <i class="fa fa-thumbs-o-up fa-lg fa-hover-hidden fa-fw" aria-hidden="true"></i>
-                                            {{-- <i class="fa fa-thumbs-up fa-lg fa-hover-show fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Balsuok Patinka!"></i> --}}
+                                        <a href="#" class="voteUp">
+                                            <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Balsuok Patinka!"></i>
                                         </a>
-                                        <span class="badge likes">{{ $quote->likes()->sum('like') }}</span>
-                                        <a href="#" class="dislike">
-                                            <i class="fa fa-thumbs-o-down fa-lg fa-hover-hidden fa-fw" aria-hidden="true"></i>
-                                            {{-- <i class="fa fa-thumbs-down fa-lg fa-hover-show fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Balsuok Nepatinka!"></i> --}}
+                                        <span class="badge votecount">{{ $quote->votes()->sum('vote') }}</span>
+                                        <a href="#" class="voteDown">
+                                            <i class="fa fa-thumbs-o-down fa-lg fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Balsuok Nepatinka!"></i>
                                         </a>
                                     @endif
 
                                 @else {{-- not a user --}}
                                     <div class="text-right">
                                         <div class="btn-group btn-group-xs" role="group">
-                                            <a href="{{ url('/login') }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Prisijunk ir Balsuok!"><span class="badge"><strong> {{ $quote->likes()->sum('like') }} </strong> </span><strong>&nbsp; Prisijunk ir balsuok <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i></strong>
+                                            <a href="{{ url('/login') }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Prisijunk ir Balsuok!"><span class="badge"><strong> {{ $quote->votes()->sum('vote') }} </strong> </span><strong>&nbsp; Prisijunk ir balsuok <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i></strong>
                                             </a>
                                         </div>
                                     </div>
@@ -175,6 +171,6 @@
     <script type="text/javascript" src="{{ URL::to('src/js/app.js') }}"></script>
     <script>
         var token = '{{ Session::token() }}';
-        var urlLike = '{{ route('submissions.like') }}';
+        var urlVote = '{{ route('submissions.vote') }}';
     </script>
 @endsection

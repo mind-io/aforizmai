@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Author;
 use App\Quote;
 use App\Category;
-use App\Like;
+use App\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

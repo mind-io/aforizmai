@@ -68,9 +68,9 @@ Route::group(['prefix' => '/submissions'], function() {
 
 });
 
-	Route::post('/submissions/like', [
-		'uses' => 'QuoteController@postLikeSubmission',
-		'as' => 'submissions.like'
+	Route::post('/submissions/vote', [
+		'uses' => 'QuoteController@postVoteSubmission',
+		'as' => 'submissions.vote'
 	]);
 	
 	// Route::post('/submissions/dislike', [

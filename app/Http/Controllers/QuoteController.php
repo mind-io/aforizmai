@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Author;
 use App\Quote;
 use App\Category;
-use App\Like;
+use App\Vote;
 use App\User;
-use App\Events\LikeEvent;
+use App\Events\VoteEvent;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,35 +62,35 @@ class QuoteController extends Controller
         ]);
     }
 
-    public function postLikeSubmission(Request $request)
+    public function postVoteSubmission(Request $request)
     {
         $quote_id = $request['quoteId'];
-        $is_like = $request['isLike'];
-        $like_status = false;
+        $is_vote = $request['isVote'];
+        $vote_status = false;
         $quote = Quote::find($quote_id);
         if (!$quote) {
             return Response::json(['message' => 'Aforizmas nerastas.'], 404);
         }
         $user = Auth::user();
-        $like = $user->likes()->where('quote_id', $quote_id)->first();
-        if ($like) {
-            $already_like = $like->like;
-            $like_status = true;
-            if ($already_like == $is_like) {
-                $like->delete();
+        $vote = $user->votes()->where('quote_id', $quote_id)->first();
+        if ($vote) {
+            $already_voted = $vote->vote;
+            $vote_status = true;
+            if ($already_voted == $is_vote) {
+                $vote->delete();
                 return Response::json(['message' => 'Balsas atšauktas!'], 200);
             }
         } else {
-            $like = new Like();
+            $vote = new Vote();
         }
-        $like->like = $is_like;
-        $like->user_id = $user->id;
-        $like->quote_id = $quote->id;
-        if ($like_status) {
-            $like->update();
+        $vote->vote = $is_vote;
+        $vote->user_id = $user->id;
+        $vote->quote_id = $quote->id;
+        if ($vote_status) {
+            $vote->update();
         } else {
-            $like->save();
-            Event::fire(new LikeEvent($quote));
+            $vote->save();
+            Event::fire(new VoteEvent($quote));
         }        
         return Response::json(['message' => 'Balsas priimtas!'], 200);
     }

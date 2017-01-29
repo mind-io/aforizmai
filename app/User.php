@@ -27,9 +27,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function likes()
+    public function votes()
     {
-        return $this->hasMany('App\Like');
+        return $this->hasMany('App\Vote');
     }
     
     public function quotes()

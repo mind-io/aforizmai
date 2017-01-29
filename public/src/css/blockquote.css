@@ -1,17 +1,17 @@
-/*body {
+body {
   background: #ecf0f1;
-}*/
+}
 
 /*Font awsome hoover*/
 
-* > .fa.fa-hover-show,
+/** > .fa.fa-hover-show,
 *:hover > .fa.fa-hover-hidden {
   display: none;
 }
 *:hover > .fa.fa-hover-show {
   display: inline-block;
 }
-
+*/
 
 /*Navbar*/
 

@@ -32,9 +32,9 @@ class Quote extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function likes()
+    public function votes()
     {
-        return $this->hasMany('App\Like');
+        return $this->hasMany('App\Vote');
     }
 
     // define local scopes to filter quotes and submissions
