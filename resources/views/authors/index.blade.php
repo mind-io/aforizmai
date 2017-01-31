@@ -33,12 +33,12 @@
                         </cite>
                         <p align="right">
                             15<a href="#">
-                                <i class="fa fa-comment-o fa-hover-hidden fa-lg fa-fw"></i>
-                                <i class="fa fa-comment fa-hover-show fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Komentuoti..."></i>
-                            </a>&nbsp;
+                                <i class="fa fa-comment-o fa-hover-hidden fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Komentuoti..."></i>
+                                {{-- <i class="fa fa-comment fa-hover-show fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Komentuoti..."></i> --}}
+                            </a>
                             9<a href="#">
-                                <i class="fa fa-heart-o fa-hover-hidden fa-lg fa-fw"></i>
-                                <i class="fa fa-heart fa-hover-show fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Pridėti į kolekciją..."></i>
+                                <i class="fa fa-heart-o fa-hover-hidden fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Pridėti į kolekciją..."></i>
+                                {{-- <i class="fa fa-heart fa-hover-show fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Pridėti į kolekciją..."></i> --}}
                             </a>
                         </p>
                     </blockquote>

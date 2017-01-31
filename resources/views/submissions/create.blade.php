@@ -32,7 +32,7 @@
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h4><i class="fa fa-plus-square fa-fw" aria-hidden="true"></i> Pridėti naują aforizmą: &nbsp;<span class="label label-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Tik registruotiems vartotojams</span></h4>
+                    <h4><i class="fa fa-plus-square fa-fw" aria-hidden="true"></i> Pridėti naują aforizmą: &nbsp;<small>({{-- <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> --}} tik registruotiems vartotojams )</small></h4>
                 </div>
                 <div class="panel-body" style="padding-left: 20px; padding-right: 20px;">
                     <form class="form" role="form" method="POST" action="{{ route('submissions.store') }}">

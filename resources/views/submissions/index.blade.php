@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-md-8">
             <div>
-                <h2>Aforizmų atranka į oficialią kolekciją</h2>
+                <h3>Aforizmų atranka į oficialią kolekciją</h3>
             </div>
             <div class="alert alert-info alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -54,7 +54,7 @@
 
                                         {{-- user voted UP the quote     --}}
                                         @if(Auth::user()->votes()->where('quote_id', $quote->id)->first()->vote === 1)
-                                            <a href="#" class="voteUp active">
+                                            <a href="#" class="voteUp">
                                                 <i class="fa fa-thumbs-up fa-lg fa-fw" aria-hidden="true"></i>
                                             </a>
                                             <span class="badge votecount">{{ $quote->votes()->sum('vote') }}</span>
@@ -68,7 +68,7 @@
                                                 <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i>
                                             </a>
                                             <span class="badge votecount">{{ $quote->votes()->sum('vote') }}</span>
-                                            <a href="#" class="voteDown active">
+                                            <a href="#" class="voteDown">
                                                 <i class="fa fa-thumbs-down fa-lg fa-fw" aria-hidden="true"></i>
                                             </a>
                                         @endif
@@ -168,7 +168,7 @@
             minimumResultsForSearch: 2
         });
     </script>
-    <script type="text/javascript" src="{{ URL::to('src/js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('src/js/vote.js') }}"></script>
     <script>
         var token = '{{ Session::token() }}';
         var urlVote = '{{ route('submissions.vote') }}';
