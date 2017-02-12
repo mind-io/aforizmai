@@ -15,11 +15,23 @@ class PagesController extends Controller
 
     public function getIndex() {
 
-		$quotes = Quote::orderByRaw('RAND()')->take(5)->get();
+        $newQuotes = Quote::Approved()->take(10)->orderBy('created_at', 'desc')->paginate(5);
+        $likedQuotes = Quote::Approved()->has('likes')->withCount('likes')->orderBy('likes_count', 'desc')->paginate(5);
+        // dd($quotes);
+		// $quotes = Quote::orderByRaw('RAND()')->take(10)->paginate(5);
         // $quotes = Quote::orderBy(DB::raw('RAND()'))->paginate(5);
         // $quotes = Quote::all()->random(10)->paginate(5);
- 
-        return view('index', ['quotes' => $quotes]);
+        
+        // return $quotes;
+
+        return view('index', [
+            'newQuotes' => $newQuotes,
+            'likedQuotes' => $likedQuotes
+        ]);
+    }
+
+    public function getVue() {
+        return view('vue');
     }
 
     public function getCategoriesIndex() {

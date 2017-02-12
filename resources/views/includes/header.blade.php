@@ -16,7 +16,7 @@
       <ul class="nav navbar-nav">
         <li><a href="#"><i class="fa fa-info-circle fa-lg fa-fw" aria-hidden="true"></i> Apie projektą<span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book fa-lg fa-fw" aria-hidden="true"></i> Oficiali kolekcija <span class="caret"></span></a>
+          <a href="{{ route('categories.index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book fa-lg fa-fw" aria-hidden="true"></i> Oficiali kolekcija <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{{ route('categories.index') }}">Pagal temą</a></li>
             <li><a href="{{ route('authors.index') }}">Pagal autorių</a></li>
@@ -26,10 +26,10 @@
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-pencil-square-o fa-lg fa-fw" aria-hidden="true"></i> Prisidėk <span class="caret"></span></a>
+          <a href="{{ route('submissions.index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-pencil-square-o fa-lg fa-fw" aria-hidden="true"></i> Prisidėk <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{ url('/submissions') }}"><i class="fa fa-fw fa-thumbs-o-up" aria-hidden="true"></i> Aforizmų atranka</a></li>
-            <li><a href="{{ url('/submissions/create') }}"><i class="fa fa-fw fa-plus-square-o" aria-hidden="true"></i> Pridėk naują aforizmą!</a></li>
+            <li><a href="{{ route('submissions.index') }}"><i class="fa fa-fw fa-thumbs-o-up" aria-hidden="true"></i> Aforizmų atranka</a></li>
+            <li><a href="{{ route('submissions.create') }}"><i class="fa fa-fw fa-plus-square-o" aria-hidden="true"></i> Pridėk naują aforizmą!</a></li>
           </ul>
         </li>
       </ul>
@@ -44,14 +44,13 @@
           <li><a href="{{ url('/register') }}"><i class="fa fa-btn fa-user-plus fa-lg fa-fw"></i> Užsiregistruoti</a></li>
         @else
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="position:relative; padding-left:50px;">
+            <a href="{{ route('user.profile') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="position:relative; padding-left:50px;">
             <img src="/src/img/uploads/avatars/{{ Auth::user()->avatar }}" class="avatar-img">
             {{ Auth::user()->name }}
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="{{ route('user.profile') }}"><i class="fa fa-pencil fa-fw"></i> Edit</a></li>
-              <li><a href="#"><i class="fa fa-trash-o fa-fw"></i> Delete</a></li>
-              <li><a href="#"><i class="fa fa-ban fa-fw"></i> Ban</a></li>
+              <li><a href="{{ route('user.profile') }}"><i class="fa fa-pencil fa-fw"></i> Mano duomenys</a></li>
+              <li><a href="{{ route('user.quote.collection.index') }}"><i class="fa fa-book fa-fw"></i> Mano aforizmai</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Atsijungti</a></li>
             </ul>

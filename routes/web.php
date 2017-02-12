@@ -7,6 +7,11 @@ Route::get('/', [
 	'as' => 'index'
 ]);
 
+Route::get('/vue', [
+	'uses' => 'PagesController@getVue',
+	'as' => 'vue'
+]);
+
 Route::get('/kategorijos', [
 	'uses' => 'PagesController@getCategoriesIndex',
 	'as' => 'categories.index'
@@ -33,6 +38,14 @@ Route::post('/autoriai', [
 	'as' => 'authors.select'
 ]);
 
+Route::post('/like', [
+	'uses' => 'UserController@postLikeQuote',
+	'as' => 'like.quote',
+	'middleware' => 'auth'
+]);
+
+
+
 // Routes for NoptApproved quotes (Submissions)
 Route::group(['prefix' => '/submissions'], function() {
 
@@ -40,6 +53,14 @@ Route::group(['prefix' => '/submissions'], function() {
 		'uses' => 'QuoteController@getSubmitForm',
 		'as' => 'submissions.create'
 	]);
+
+	Route::post('/create', [
+		'uses' => 'QuoteController@submitQuote',
+		'as' => 'submissions.store',
+		'middleware' => 'auth'
+
+	]);
+
 
 	Route::get('/autocomplete', [
 		'uses'=>'QuoteController@getAuthorAutocomplete',
@@ -66,17 +87,13 @@ Route::group(['prefix' => '/submissions'], function() {
 		'as' => 'submissions.authors.select'
 	]);
 
-});
-
-	Route::post('/submissions/vote', [
-		'uses' => 'QuoteController@postVoteSubmission',
-		'as' => 'submissions.vote'
+	Route::post('/vote', [
+		'uses' => 'UserController@postVoteSubmission',
+		'as' => 'submissions.vote',
+		'middleware' => 'auth'
 	]);
-	
-	// Route::post('/submissions/dislike', [
-	// 	'uses' => 'QuoteController@postDislikeSubmission',
-	// 	'as' => 'submissions.dislike'
-	// ]);
+
+});
 
 
 
@@ -87,29 +104,27 @@ Route::get('/csv', [
 ]);
 
 Auth::routes();
+
 Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::group(['middleware' => 'auth'], function() {
 
-	Route::post('/submissions/create', [
-		'uses' => 'QuoteController@submitQuote',
-		'as' => 'submissions.store'
+// User routes
+Route::group(['prefix' => '/user', 'middleware' => 'auth'], function() {
+
+	Route::get('/profile', [
+		'uses' => 'UserController@userProfile',
+		'as' => 'user.profile'
 	]);
 
+	Route::post('/profile', [
+		'uses' => 'UserController@userProfileUpdate',
+		'as' => 'user.profile.update'
+	]);
 
-	Route::group(['prefix' => '/user'], function() {
-
-		Route::get('/profile', [
-			'uses' => 'UserController@profile',
-			'as' => 'user.profile'
-		]);
-
-		Route::post('/profile', [
-			'uses' => 'UserController@profileUpdate',
-			'as' => 'user.profile.update'
-		]);
-
-	});
+	Route::get('/collection', [
+		'uses' => 'UserController@userQuoteCollectionIndex',
+		'as' => 'user.quote.collection.index'
+	]);
 	
 });
 

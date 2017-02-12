@@ -8,9 +8,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
+
+            {{-- Header --}}
             <div>
-                <h2>{{ $slug->name }} <br><small>{{ $slug->description }}</small></h2>
+                <h3>{{ $slug->name }} <br><small>{{ $slug->description }}</small></h3>
             </div>
+
+            {{-- Breadcrumb --}}
             <div>
                 <ol class="breadcrumb" style="margin: 0px;">
                   <li><a href="{{ route('index') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
@@ -18,28 +22,11 @@
                   <li class="active">{{ $slug->name }}</li>
                 </ol>
             </div>
-            <div>
-                @foreach ($quotes as $quote)
-                    <blockquote>
-                        <p>{{ $quote->quote }}</p> 
-                        <cite>
-                            <a href="{{ route('submissions.authors.name', ['slug' => $quote->author->slug]) }}">{{ $quote->author->name }}</a> |
-                            <a href="{{ route('submissions.categories.name', ['slug' => $quote->category->slug]) }}">{{ $quote->category->name }}</a>
-                        </cite>
-                        <p align="right">
-                            <a href="#">
-                                <i class="fa fa-thumbs-o-up fa-lg fa-hover-hidden fa-fw" aria-hidden="true"></i>
-                                <i class="fa fa-thumbs-up fa-lg fa-hover-show fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Patinka!"></i>
-                            </a>
-                            <span class="badge">42</span>
-                            <a href="#">
-                                <i class="fa fa-thumbs-o-down fa-lg fa-hover-hidden fa-fw" aria-hidden="true"></i>
-                                <i class="fa fa-thumbs-down fa-lg fa-hover-show fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Nepatinka!"></i>
-                            </a>
-                        </p>
-                    </blockquote>
-                @endforeach
-            </div>
+
+            <!-- Blockquote include -->
+            @include('includes.blockquote-submission')
+
+            {{-- Pagination --}}
             <div>
                 <nav>
                     <ul class="pagination">
@@ -47,11 +34,13 @@
                     </ul>
                 </nav>
             </div>
+
         </div>{{-- /col-md-8 --}}
 
         <div class="col-md-4">
 
-            <div class="panel panel-info">
+            {{-- Quote categories panel --}}
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4>Aforizmų temos</h4>
                 </div>            
@@ -61,7 +50,7 @@
                             @if(count($category->quotes) > 0)
                                 <a href="{{ route('submissions.categories.name', ['slug' => $category->slug]) }}" 
                                     @if (Request::segment(3) == $category->slug)
-                                        class="list-group-item list-group-item-info"
+                                        class="list-group-item list-group-item-primary disabled"
                                     @else
                                         class="list-group-item list-group-item-default"
                                     @endif
@@ -73,9 +62,19 @@
                         @endforeach
                     </div>
                 </div>
-            </div>{{-- /panel --}}
+            </div>{{-- /Categories panel --}}
 
         </div>{{-- /col-md-4 --}}
     </div>{{-- /row --}}
 </div>
+@endsection
+
+@section('scripts')
+
+    <script type="text/javascript" src="{{ URL::to('src/js/vote.js') }}"></script>
+    <script>
+        var token = '{{ Session::token() }}';
+        var urlVote = '{{ route('submissions.vote') }}';
+    </script>
+
 @endsection

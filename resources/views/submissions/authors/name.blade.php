@@ -13,9 +13,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
+
+            {{-- Header --}}
             <div>
-                <h2>{{ $slug->name }} <span class="badge">&nbsp;Aforizmų: {{ $slug->quotes()->NotApproved()->count() }}&nbsp;</span></h2>
+                <h3>{{ $slug->name }} <span class="badge">&nbsp;Aforizmų: {{ $slug->quotes()->NotApproved()->count() }}&nbsp;</span></h3>
             </div>
+
+            {{-- Breadcrumb --}}
             <div>
                 <ol class="breadcrumb" style="margin: 0px;">
                   <li><a href="{{ route('index') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
@@ -23,28 +27,11 @@
                   <li class="active">{{ $slug->name }} </li>
                 </ol>
             </div>
-            <div>
-                @foreach ($quotes as $quote)
-                    <blockquote>
-                        <p>{{ $quote->quote }}</p> 
-                        <cite>
-                            <a href="{{ route('submissions.authors.name', ['slug' => $quote->author->slug]) }}">{{ $quote->author->name }}</a> |
-                            <a href="{{ route('submissions.categories.name', ['slug' => $quote->category->slug]) }}">{{ $quote->category->name }}</a>
-                        </cite>
-                        <p align="right">
-                            <a href="#">
-                                <i class="fa fa-thumbs-o-up fa-lg fa-hover-hidden fa-fw" aria-hidden="true"></i>
-                                <i class="fa fa-thumbs-up fa-lg fa-hover-show fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Patinka!"></i>
-                            </a>
-                            <span class="badge">42</span>
-                            <a href="#">
-                                <i class="fa fa-thumbs-o-down fa-lg fa-hover-hidden fa-fw" aria-hidden="true"></i>
-                                <i class="fa fa-thumbs-down fa-lg fa-hover-show fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Nepatinka!"></i>
-                            </a>
-                        </p>
-                    </blockquote>
-                @endforeach
-            </div>
+
+            <!-- Blockquote include -->
+            @include('includes.blockquote-submission')
+
+            {{-- Pagination --}}
             <div>
                 <nav>
                     <ul class="pagination">
@@ -52,9 +39,12 @@
                     </ul>
                 </nav>
             </div>
+
         </div>{{-- /col-md-8 --}}
 
         <div class="col-md-4">
+
+            {{-- Quote Author selector --}}
             <div class="well">
                 <form class="form" method="POST" action="{{ route('submissions.authors.select') }}">
                 {{ csrf_field() }}
@@ -78,13 +68,14 @@
                         <i class="fa fa-fw fa-filter"></i> Filtruoti
                     </button>
                 </form>
-            </div>{{-- /well --}}
+            </div>{{-- /Author selector --}}
         </div>{{-- /col-md-4 --}}
     </div>{{-- /row --}}
 </div>
 @endsection
 
 @section('scripts')
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script type="text/javascript">
         $("#author_id").select2({
@@ -93,5 +84,12 @@
             allowClear: true,
             minimumResultsForSearch: 2
         });
-    </script>                
+    </script>
+    
+    <script type="text/javascript" src="{{ URL::to('src/js/vote.js') }}"></script>
+    <script>
+        var token = '{{ Session::token() }}';
+        var urlVote = '{{ route('submissions.vote') }}';
+    </script>
+
 @endsection

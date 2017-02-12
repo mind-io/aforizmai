@@ -6,11 +6,17 @@
 
 @section('content')
 <div class="container">
+
     <div class="row">
+
         <div class="col-md-8" style="padding-left: 30px;">
+
+            {{-- Header --}}
             <div>
                 <h3>Aforizmai pagal temą <small>(visos temos)</small></h3>
             </div>
+
+            {{-- Breadcrumb --}}
             <div>
                 <ol class="breadcrumb" style="margin: 0px;">
                   <li><a href="{{ route('index') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
@@ -18,27 +24,11 @@
                   <li class="active">Visos</li>
                 </ol>
             </div>
-            <div>
-                @foreach ($quotes as $quote)
-                    <blockquote>
-                        <p>{{ $quote->quote }}</p> 
-                        <cite>
-                            <a href="{{ route('authors.name', ['slug' => $quote->author->slug]) }}">{{ $quote->author->name }}</a> |
-                            <a href="{{ route('categories.name', ['slug' => $quote->category->slug]) }}">{{ $quote->category->name }}</a>
-                        </cite>
-                        <p align="right">
-                            15<a href="#">
-                                <i class="fa fa-comment-o fa-hover-hidden fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Komentuoti..."></i>
-                                {{-- <i class="fa fa-comment fa-hover-show fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Komentuoti..."></i> --}}
-                            </a>
-                            9<a href="#">
-                                <i class="fa fa-heart-o fa-hover-hidden fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Pridėti į kolekciją..."></i>
-                                {{-- <i class="fa fa-heart fa-hover-show fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Pridėti į kolekciją..."></i> --}}
-                            </a>
-                        </p>
-                    </blockquote>
-                @endforeach
-            </div>
+
+            <!-- Blockquote include -->
+            @include('includes.blockquote')
+
+            {{-- Pagination --}}
             <div>
                 <nav>
                     <ul class="pagination">
@@ -46,7 +36,8 @@
                     </ul>
                 </nav>
             </div>
-        </div>
+
+        </div>{{-- /col-md-8 --}}
 
         <div class="col-md-4" style="padding-left: 30px; margin-top:21px;">
 
@@ -62,7 +53,9 @@
                 @endforeach
             </div> --}}
 
+            {{-- Quote categories panel --}}
             <div class="panel panel-success">
+
                 <div class="panel-heading">
                     <h4>Aforizmų temos</h4>
                 </div>
@@ -78,9 +71,19 @@
                         @endforeach
                     </div>
                 </div>
-            </div>
+            </div>{{-- /panel --}}
 
-        </div>
-    </div>
-</div>
+        </div>{{-- /col-md-4 --}}
+    </div>{{-- /row --}}
+</div>{{-- /container --}}
+@endsection
+
+@section('scripts')
+
+    <script type="text/javascript" src="{{ URL::to('src/js/like.js') }}"></script>
+    <script>
+        var token = '{{ Session::token() }}';
+        var urlLike = '{{ route('like.quote') }}';
+    </script>
+
 @endsection

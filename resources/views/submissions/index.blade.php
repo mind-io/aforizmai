@@ -10,12 +10,17 @@
 @endsection
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-md-8">
+
+            {{-- Header --}}
             <div>
                 <h3>Aforizmų atranka į oficialią kolekciją</h3>
             </div>
+
+            {{-- Alert msg --}}
             <div class="alert alert-info alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <i class="fa fa-lg fa-fw fa-info-circle" aria-hidden="true"></i>
@@ -25,80 +30,19 @@
                 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                 consequat.
             </div>
+
+            {{-- Breadcrumb --}}
             <div>
                 <ol class="breadcrumb" style="margin: 0px;">
                   <li><a href="{{ route('index') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
                   <li class="active">Visi nepatvirtinti</li>
                 </ol>
             </div>
-            <div>
-                @if(count($quotes) == 0)
-                    <br><p>Nėra nepatvirtintų aforizmų...</p>
-                @else
-                    @foreach ($quotes as $quote)
-                        <blockquote>
-                            <p>{{ $quote->quote }}</p>
-                            <cite>
-                                <a href="{{ route('submissions.authors.name', ['slug' => $quote->author->slug]) }}">{{ $quote->author->name }}</a> |
-                                <a href="{{ route('submissions.categories.name', ['slug' => $quote->category->slug]) }}">{{ $quote->category->name }}</a>
-                            </cite>
-                            <p align="right" data-quoteid="{{ $quote->id }}">
 
-                                @if(Auth::user()) {{-- is user --}}
-                                    {{-- <a href="#" class="vote">{{ Auth::user()->votes()->where('quote_id', $quote->id)->first() ? Auth::user()->votes()->where('quote_id', $quote->id)->first()->vote === 1 ? 'You vote this Quote' : 'vote' : 'vote' }}</a>
-                                    <span class="badge vote-badge">{{ $quote->votes()->sum('vote') }}</span>
-                                    <a href="#" class="disvote">{{ Auth::user()->votes()->where('quote_id', $quote->id)->first() ? Auth::user()->votes()->where('quote_id', $quote->id)->first()->vote === -1 ? 'You disvote this Quote' : 'Disvote' : 'Disvote' }}</a> --}}
+            <!-- Blockquote include -->
+            @include('includes.blockquote-submission')
 
-                                    {{-- Checking if user has voted --}}
-                                    @if(Auth::user()->votes()->where('quote_id', $quote->id)->first() )
-
-                                        {{-- user voted UP the quote     --}}
-                                        @if(Auth::user()->votes()->where('quote_id', $quote->id)->first()->vote === 1)
-                                            <a href="#" class="voteUp">
-                                                <i class="fa fa-thumbs-up fa-lg fa-fw" aria-hidden="true"></i>
-                                            </a>
-                                            <span class="badge votecount">{{ $quote->votes()->sum('vote') }}</span>
-                                            <a href="#" class="voteDown">
-                                                <i class="fa fa-thumbs-o-down fa-lg fa-fw" aria-hidden="true"></i>
-                                            </a>
-
-                                        {{-- user voted DOWN the quote --}}
-                                        @else
-                                            <a href="#" class="voteUp">
-                                                <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i>
-                                            </a>
-                                            <span class="badge votecount">{{ $quote->votes()->sum('vote') }}</span>
-                                            <a href="#" class="voteDown">
-                                                <i class="fa fa-thumbs-down fa-lg fa-fw" aria-hidden="true"></i>
-                                            </a>
-                                        @endif
-
-                                    {{-- user has no vote --}}
-                                    @else
-                                        <a href="#" class="voteUp">
-                                            <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Balsuok Patinka!"></i>
-                                        </a>
-                                        <span class="badge votecount">{{ $quote->votes()->sum('vote') }}</span>
-                                        <a href="#" class="voteDown">
-                                            <i class="fa fa-thumbs-o-down fa-lg fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Balsuok Nepatinka!"></i>
-                                        </a>
-                                    @endif
-
-                                @else {{-- not a user --}}
-                                    <div class="text-right">
-                                        <div class="btn-group btn-group-xs" role="group">
-                                            <a href="{{ url('/login') }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Prisijunk ir Balsuok!"><span class="badge"><strong> {{ $quote->votes()->sum('vote') }} </strong> </span><strong>&nbsp; Prisijunk ir balsuok <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i></strong>
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endif
-
-                            </p>
-                        </blockquote>
-                    @endforeach
-                @endif
-            </div>
-
+            {{-- Pagination --}}
             <div>
                 <nav>
                     <ul class="pagination">
@@ -106,11 +50,13 @@
                     </ul>
                 </nav>
             </div>
+
         </div>{{-- /col-md-8 --}}
 
         <div class="col-md-4">
 
-            <div class="panel panel-info">
+            {{-- Quote categories panel --}}
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4>Aforizmų temos</h4>
                 </div>           
@@ -126,8 +72,9 @@
                         @endforeach
                     </div>
                 </div>
-            </div>{{-- /panel --}}
+            </div>{{-- /Categories panel --}}
 
+            {{-- Quote Author selector --}}
             <div class="well">
                 <form class="form" method="POST" action="{{ route('submissions.authors.select') }}">
                 {{ csrf_field() }}
@@ -151,7 +98,7 @@
                         <i class="fa fa-fw fa-filter"></i> Filtruoti
                     </button>
                 </form>
-            </div>{{-- /well --}}
+            </div>{{-- /Author selector --}}
 
         </div>{{-- /col-md-4 --}}
     </div>{{-- /row --}}
@@ -159,6 +106,7 @@
 @endsection
 
 @section('scripts')
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script type="text/javascript">
         $("#author_id").select2({
@@ -168,9 +116,11 @@
             minimumResultsForSearch: 2
         });
     </script>
+
     <script type="text/javascript" src="{{ URL::to('src/js/vote.js') }}"></script>
     <script>
         var token = '{{ Session::token() }}';
         var urlVote = '{{ route('submissions.vote') }}';
     </script>
+
 @endsection

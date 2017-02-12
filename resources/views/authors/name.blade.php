@@ -12,10 +12,16 @@
 @section('content')
 <div class="container">
     <div class="row">
+
+        {{-- Left div --}}
         <div class="col-md-8" style="padding-left: 30px;">
+
+            {{-- Header --}}
             <div>
                 <h3>{{ $slug->name }} <span class="badge">&nbsp;Aforizmų: {{ $slug->quotes()->Approved()->count() }}&nbsp;</span></h3>
             </div>
+
+            {{-- Breadcrumb --}}
             <div>
                 <ol class="breadcrumb" style="margin: 0px;">
                   <li><a href="{{ route('index') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
@@ -23,27 +29,11 @@
                   <li class="active">{{ $slug->name }} </li>
                 </ol>
             </div>
-            <div>
-                @foreach ($quotes as $quote)
-                    <blockquote>
-                        <p>{{ $quote->quote }}</p> 
-                        <cite>
-                            <a href="{{ route('authors.name', ['slug' => $quote->author->slug]) }}">{{ $quote->author->name }}</a> |
-                            <a href="{{ route('categories.name', ['slug' => $quote->category->slug]) }}">{{ $quote->category->name }}</a>
-                        </cite>
-                        <p align="right">
-                            15<a href="#">
-                                <i class="fa fa-comment-o fa-hover-hidden fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Komentuoti..."></i>
-                                {{-- <i class="fa fa-comment fa-hover-show fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Komentuoti..."></i> --}}
-                            </a>
-                            9<a href="#">
-                                <i class="fa fa-heart-o fa-hover-hidden fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Pridėti į kolekciją..."></i>
-                                {{-- <i class="fa fa-heart fa-hover-show fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Pridėti į kolekciją..."></i> --}}
-                            </a>
-                        </p>
-                    </blockquote>
-                @endforeach
-            </div>
+
+            <!-- Blockquote include -->
+            @include('includes.blockquote')
+
+            {{-- Pagination --}}
             <div>
                 <nav>
                     <ul class="pagination">
@@ -51,9 +41,13 @@
                     </ul>
                 </nav>
             </div>
+
         </div>{{-- /col-md-8 --}}
 
+        {{-- Right div --}}
         <div class="col-md-4" style="padding-left: 30px; margin-top:21px;">
+
+            {{-- Author selector --}}
             <div class="well">
                 <form class="form" method="POST" action="{{ route('authors.select') }}">
                 {{ csrf_field() }}
@@ -74,13 +68,14 @@
                         @endif
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-primary btn-block">
+                        <button type="submit" class="btn btn-success btn-block">
                             <i class="fa fa-fw fa-filter"></i> Filtruoti
                         </button>
                         <br>
                     </div>
                 </form>
             </div>{{-- /well --}}
+
         </div>{{-- /col-md-4 --}}
     </div>{{-- /row --}}
 </div>
@@ -95,5 +90,12 @@
             allowClear: true,
             minimumResultsForSearch: 2
         });
-    </script>                
+    </script>
+
+    <script type="text/javascript" src="{{ URL::to('src/js/like.js') }}"></script>
+    <script>
+        var token = '{{ Session::token() }}';
+        var urlLike = '{{ route('like.quote') }}';
+    </script>
+
 @endsection
