@@ -64,7 +64,7 @@
                         @foreach ($categories as $category)
                             @if(count($category->quotes) > 0)
                                 <a href="{{ route('categories.name', ['slug' => $category->slug]) }}" class="list-group-item">
-                                <span class="badge">{{ $category->quotes()->Approved()->count() }}</span>
+                                <span class="badge">{{ $category->quotes_count }}</span>
                                 <h4 class="list-group-item-heading">{{ $category->name }}</h4>
                                 <p class="list-group-item-text">{{ $category->description }}</p></a>
                             @endif

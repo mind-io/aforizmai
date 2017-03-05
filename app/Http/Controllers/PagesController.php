@@ -37,9 +37,15 @@ class PagesController extends Controller
     public function getCategoriesIndex() {
 
         $quotes = Quote::Approved()->orderBy('created_at', 'desc')->paginate(5);
+
         $categories = Category::whereHas('quotes', function ($query) {
             $query->where('approved', true);
-        })->orderBy('id', 'asc')->get();
+        })
+        ->withCount(['quotes' => function ($query) {
+            $query->where('approved', true);
+        }])
+        ->orderBy('id', 'asc')
+        ->get();
 
 		return view('categories.index', ['quotes' => $quotes, 'categories' => $categories]);
     }
@@ -47,11 +53,18 @@ class PagesController extends Controller
     public function getCategoriesName($slug) {
 
         $slug = Category::where('slug', $slug)->first();
+        
         $categories = Category::whereHas('quotes', function ($query) {
             $query->where('approved', true);
-        })->orderBy('id', 'asc')->get();
+        })
+        ->withCount(['quotes' => function ($query) {
+            $query->where('approved', true);
+        }])
+        ->orderBy('id', 'asc')
+        ->get();
+        
         $quotes = $slug->quotes()->Approved()->orderBy('created_at', 'desc')->paginate(5);
- 
+
         return view('categories.name', ['quotes' => $quotes, 'slug' => $slug, 'categories' => $categories]);
     }
     
@@ -60,7 +73,12 @@ class PagesController extends Controller
         $quotes = Quote::Approved()->orderBy('created_at', 'desc')->paginate(5);
         $authors = Author::whereHas('quotes', function ($query) {
             $query->where('approved', true);
-        })->orderBy('name', 'asc')->get();
+        })
+        ->withCount(['quotes' => function ($query) {
+            $query->where('approved', true);
+        }])
+        ->orderBy('name', 'asc')
+        ->get();
  
         return view('authors.index', ['quotes' => $quotes, 'authors' => $authors]);
     }
@@ -70,7 +88,13 @@ class PagesController extends Controller
         $slug = Author::where('slug', $slug)->first();
         $authors = Author::whereHas('quotes', function ($query) {
             $query->where('approved', true);
-        })->orderBy('name', 'asc')->get();
+        })
+        ->withCount(['quotes' => function ($query) {
+            $query->where('approved', true);
+        }])
+        ->orderBy('name', 'asc')
+        ->get();
+        
         $quotes = $slug->quotes()->Approved()->orderBy('created_at', 'desc')->paginate(5);
 
         return view('authors.name', ['quotes' => $quotes, 'slug' => $slug, 'authors' => $authors]);

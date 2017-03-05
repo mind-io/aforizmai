@@ -57,7 +57,7 @@
                             <option> </option>
                             @foreach ($authors as $author)
                                 @if(count($author->quotes) > 0)
-                                    <option value="{{ $author->id }}">{{ $author->name }} ({{ $author->quotes()->Approved()->count() }})</option>
+                                    <option value="{{ $author->id }}">{{ $author->name }} ({{ $author->quotes_count }})</option>
                                 @endif
                             @endforeach
                         </select>
@@ -74,7 +74,28 @@
                         <br>
                     </div>
                 </form>
-            </div>{{-- /well --}}
+            </div>{{-- /Author selector --}}
+
+            {{-- Author Bio     --}}
+            <div class="well">
+                <h4><i class="fa fa-lg fa-fw fa-info-circle" aria-hidden="true"></i> {{ $slug->name }} bio:</h4>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #ecf0f1;">
+                            <th>Tautybė:</th>
+                            <td>Prancūzija</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ecf0f1;">
+                            <th>Veiklos rūšis:</th>
+                            <td>fizikas, filosofas</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ecf0f1;">
+                            <th>Gyveno:</th>
+                            <td>1558 - 1687</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>{{-- /Author bio --}}
 
         </div>{{-- /col-md-4 --}}
     </div>{{-- /row --}}

@@ -59,7 +59,7 @@
                                         class="list-group-item list-group-item-default"
                                     @endif
                                 >
-                                <span class="badge">{{ $category->quotes()->Approved()->count() }}</span>
+                                <span class="badge">{{ $category->quotes_count }}</span>
                                 <h4 class="list-group-item-heading">{{ $category->name }}</h4>
                                 <p class="list-group-item-text">{{ $category->description }}</p></a>
                             @endif

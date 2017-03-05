@@ -46,7 +46,7 @@
         </div>{{-- /Left --}}
 
         {{-- Right div --}}
-        <div class="col-md-4" style="padding-left: 30px; margin-top:10.5px;">
+        <div class="col-md-4" style="padding-left: 30px; margin-top:21px;">
             
             {{-- Author selector --}}
             <div class="well">
@@ -58,7 +58,7 @@
                             <option> </option>
                             @foreach ($authors as $author)
                                 @if(count($author->quotes) > 0)
-                                    <option value="{{ $author->id }}">{{ $author->name }} ({{ $author->quotes()->Approved()->count() }})</option>
+                                    <option value="{{ $author->id }}">{{ $author->name }} ({{ $author->quotes_count }})</option>
                                 @endif
                             @endforeach
                         </select>

@@ -157,9 +157,11 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
         App\Providers\CustomValidator::class,
         Intervention\Image\ImageServiceProvider::class,
         Spatie\CollectionMacros\CollectionMacroServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
     ],
 

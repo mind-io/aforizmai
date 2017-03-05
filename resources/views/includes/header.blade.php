@@ -49,7 +49,7 @@
             {{ Auth::user()->name }}
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="{{ route('user.profile') }}"><i class="fa fa-pencil fa-fw"></i> Mano duomenys</a></li>
+              <li><a href="{{ route('user.profile') }}"><i class="fa fa-user-circle fa-fw"></i> Mano profilis</a></li>
               <li><a href="{{ route('user.quote.collection.index') }}"><i class="fa fa-book fa-fw"></i> Mano aforizmai</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Atsijungti</a></li>
