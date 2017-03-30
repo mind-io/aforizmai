@@ -2,8 +2,6 @@
 
 namespace App;
 
-// use App\Scopes\ApprovedScope;
-// use App\Scopes\NotApprovedScope;
 use Illuminate\Database\Eloquent\Model;
 
 class Quote extends Model
@@ -13,9 +11,10 @@ class Quote extends Model
     // {
     //     parent::boot();
 
-    //     static::addGlobalScope(new ApprovedScope);
-    //     // static::addGlobalScope(new NotApprovedScope);
+    //     static::addGlobalScope(new QuoteScope);
+    //     static::addGlobalScope(new SubmissionScope);
     // }
+
 
     public function author()
     {
@@ -47,12 +46,12 @@ class Quote extends Model
     
     public function scopeApproved($query)
     {
-        return $query->where('approved', true);
+        $query->where('approved', true);
     }
 
     public function scopeNotApproved($query)
     {
-        return $query->where('approved', false);
+        $query->where('approved', false);
     }
 
 

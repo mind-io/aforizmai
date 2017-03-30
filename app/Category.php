@@ -10,4 +10,9 @@ class Category extends Model
     {
     	return $this->hasMany('App\Quote');    	
     }
+    
+    public function approvedQuotes()
+    {
+        return $this->quotes()->approved();
+    }    
 }

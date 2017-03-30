@@ -5,9 +5,9 @@ namespace App\Scopes;
 use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use App\Scopes\ApprovedScope;
+// use App\Scopes\ApprovedScope;
 
-class NotApprovedScope implements Scope
+class SubmissionScope implements Scope
 {
     /**
      * Apply the scope to a given Eloquent query builder.

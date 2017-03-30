@@ -56,9 +56,7 @@
                         <select id="author_id" class="form-control select2 input-lg" name="author_id">
                             <option> </option>
                             @foreach ($authors as $author)
-                                @if(count($author->quotes) > 0)
-                                    <option value="{{ $author->id }}">{{ $author->name }} ({{ $author->quotes_count }})</option>
-                                @endif
+                                <option value="{{ $author->id }}">{{ $author->name }} ({{ $author->quotes_count }})</option>
                             @endforeach
                         </select>
                         @if ($errors->has('author_id'))

@@ -57,9 +57,7 @@
                         <select id="author_id" class="form-control select2 input-lg" name="author_id">
                             <option> </option>
                             @foreach ($authors as $author)
-                                @if(count($author->quotes) > 0)
-                                    <option value="{{ $author->id }}">{{ $author->name }} ({{ $author->quotes_count }})</option>
-                                @endif
+                                <option value="{{ $author->id }}">{{ $author->name }} ({{ $author->quotes_count }})</option>
                             @endforeach
                         </select>
                         @if ($errors->has('author_id'))
@@ -76,6 +74,27 @@
                     </div>
                 </form>
             </div>{{-- /Author selector --}}
+
+            <div class="well">
+                <h4><i class="fa fa-fw fa-lg fa-bar-chart" aria-hidden="true"></i> Populiariausi autoriai <span class="badge badge-default"> Top 10 : </span></h4>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #ecf0f1;">
+                            <td><span class="badge">1</span> Albert Camus</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ecf0f1;">
+                            <td><span class="badge">2</span> Petras Petrauskas</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ecf0f1;">
+                            <td><span class="badge">3</span> Oscar Wilde</td>
+                        </tr>
+                    </tbody>
+                </table>                
+                <ol>
+                    <li>Albert Camus</li>
+                    <li>Petras Petrauskas</li>
+                </ol>
+            </div>
 
         </div>{{-- /col-md-4 --}}
     </div>{{-- /row --}}

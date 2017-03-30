@@ -8,6 +8,8 @@ use App\Category;
 use App\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Scopes\QuoteScope;
+use App\Scopes\SubmissionScope;
 
 class PagesController extends Controller
 {
@@ -36,36 +38,28 @@ class PagesController extends Controller
 
     public function getCategoriesIndex() {
 
-        $quotes = Quote::Approved()->orderBy('created_at', 'desc')->paginate(5);
+        $quotes = Quote::approved()->orderBy('created_at', 'desc')->paginate(5);
 
-        $categories = Category::whereHas('quotes', function ($query) {
-            $query->where('approved', true);
-        })
-        ->withCount(['quotes' => function ($query) {
-            $query->where('approved', true);
-        }])
-        ->orderBy('id', 'asc')
-        ->get();
+        $categories = Category::has('approvedQuotes')
+            ->withCount('approvedQuotes')
+            ->orderBy('id')
+            ->get();
 
-		return view('categories.index', ['quotes' => $quotes, 'categories' => $categories]);
+		return view('categories.index', compact('quotes', 'categories'));
     }
 
     public function getCategoriesName($slug) {
 
         $slug = Category::where('slug', $slug)->first();
-        
-        $categories = Category::whereHas('quotes', function ($query) {
-            $query->where('approved', true);
-        })
-        ->withCount(['quotes' => function ($query) {
-            $query->where('approved', true);
-        }])
-        ->orderBy('id', 'asc')
-        ->get();
-        
-        $quotes = $slug->quotes()->Approved()->orderBy('created_at', 'desc')->paginate(5);
 
-        return view('categories.name', ['quotes' => $quotes, 'slug' => $slug, 'categories' => $categories]);
+        $quotes = $slug->quotes()->approved()->orderBy('created_at', 'desc')->paginate(5);
+        
+        $categories = Category::has('approvedQuotes')
+            ->withCount('approvedQuotes')
+            ->orderBy('id')
+            ->get();
+        
+        return view('categories.name', compact('slug', 'quotes', 'categories'));
     }
     
     public function getAuthorsIndex() {
