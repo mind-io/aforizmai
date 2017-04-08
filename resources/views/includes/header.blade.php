@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#"><i class="fa fa-info-circle fa-lg fa-fw" aria-hidden="true"></i> Apie projektą<span class="sr-only">(current)</span></a></li>
+
         <li class="dropdown">
           <a href="{{ route('categories.index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book fa-lg fa-fw" aria-hidden="true"></i> Oficiali kolekcija <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -25,6 +25,7 @@
             <li><a href="#">Komentuojamų TOP-50</a></li>
           </ul>
         </li>
+
         <li class="dropdown">
           <a href="{{ route('submissions.index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-pencil-square-o fa-lg fa-fw" aria-hidden="true"></i> Prisidėk <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -32,11 +33,18 @@
             <li><a href="{{ route('submissions.create') }}"><i class="fa fa-fw fa-plus-square-o" aria-hidden="true"></i> Pridėk naują aforizmą!</a></li>
           </ul>
         </li>
+
+        <li><a href="#"><i class="fa fa-info-circle fa-lg fa-fw" aria-hidden="true"></i> Apie projektą<span class="sr-only">(current)</span></a></li>
+
       </ul>
 
       <!-- Right Side Of Navbar -->
       <ul class="nav navbar-nav navbar-right">
         {{-- <li class="active"><a href="#"><i class="fa fa-comments fa-lg" aria-hidden="true"></i> Komentarai</a></li> --}}
+
+        <li>
+          <button type="button" class="btn btn-default navbar-btn"><i class="fa fa-fw fa-lg fa-plus" aria-hidden="true"></i> Pridėk aforizmą</button>
+        </li>
 
         <!-- Authentication Links -->
         @if (Auth::guest())

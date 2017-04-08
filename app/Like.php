@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Like extends Model
 {
@@ -15,5 +16,14 @@ class Like extends Model
     {
     	return $this->belongsTo('App\Quote');
     }
+
+
+    // local scope for users likes
+    
+    public function scopeUserLikes($query)
+    {
+        $userID = Auth::user()->id;
+        $query->where('user_id', $userID);
+    }    
 
 }

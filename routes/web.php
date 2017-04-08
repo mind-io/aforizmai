@@ -125,6 +125,21 @@ Route::group(['prefix' => '/user', 'middleware' => 'auth'], function() {
 		'uses' => 'UserController@userQuoteCollectionIndex',
 		'as' => 'user.quote.collection.index'
 	]);
+
+	Route::get('/collection/kategorijos/{slug}', [
+		'uses' => 'UserController@userQuoteCollectionCategory',
+		'as' => 'user.quote.collection.category'
+	]);
+
+	Route::get('/collection/autoriai/{slug}', [ 
+		'uses' => 'UserController@userQuoteCollectionAuthor',
+		'as' => 'user.quote.collection.author'
+	]);	
+
+	Route::post('/autoriai', [ 
+		'uses' => 'UserController@userQuoteCollectionAuthorSelect',
+		'as' => 'user.quote.collection.author.select'
+	]);
 	
 });
 

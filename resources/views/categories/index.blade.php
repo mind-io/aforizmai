@@ -9,7 +9,7 @@
 
     <div class="row">
 
-        <div class="col-md-8" style="padding-left: 30px;">
+        <div class="col-md-8 left-column">
 
             {{-- Header --}}
             <div>
@@ -29,7 +29,7 @@
             @include('includes.blockquote')
 
             {{-- Pagination --}}
-            <div>
+            <div class="paginate">
                 <nav>
                     <ul class="pagination">
                         {{ $quotes->links() }}
@@ -39,7 +39,7 @@
 
         </div>{{-- /col-md-8 --}}
 
-        <div class="col-md-4" style="padding-left: 30px; margin-top:21px;">
+        <div class="col-md-4 right-column">
 
 {{--             <div class="list-group">
                 <div class="list-group-item list-group-item-success"><h4><strong>Aforizmų temos</strong></h4></div>

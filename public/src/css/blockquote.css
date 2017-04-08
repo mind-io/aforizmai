@@ -14,16 +14,16 @@ body {
   /*height: 100%;  cross-browser */
 }
 
-/*Font awsome hoover*/
+/* Pagination */
+ .paginate {
+	text-align: center;
+ }
 
-/** > .fa.fa-hover-show,
-*:hover > .fa.fa-hover-hidden {
-  display: none;
-}
-*:hover > .fa.fa-hover-show {
-  display: inline-block;
-}
-*/
+ /* Right column*/
+ .right-column {
+ 	padding: 0px 30px; margin-top:21px;
+ }
+ 
 
 /*Navbar*/
 
@@ -58,7 +58,7 @@ body {
 .navbar-brand {
   font-family: 'Kaushan Script', cursive;
   font-size:24px;
-  padding: 0px 0px 6px 0px;
+  padding: 0px 6px 6px 0px;
   display: flex;
   align-items: center;
 }

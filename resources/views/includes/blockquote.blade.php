@@ -16,13 +16,13 @@
                             @if(Auth::user()) {{-- is a user --}}
                                 {{-- Checking if the user has like --}}
                                 @if(Auth::user()->likes()->where('quote_id', $quote->id)->first() )
-                                    <span>{{ $quote->likes()->count('like') }}</span>
+                                    <span>{{ $quote->likes_count }}</span>
                                     <a href="#" class="like">
                                         <i class="fa fa-heart fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Pridėti į kolekciją..."></i>
                                     </a>
                                 {{-- user has no like --}}
                                 @else
-                                    <span>{{ $quote->likes()->count('like') }}</span>
+                                    <span>{{ $quote->likes_count }}</span>
                                     <a href="#" class="like">
                                         <i class="fa fa-heart-o fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Pridėti į kolekciją..."></i>
                                     </a>
@@ -31,7 +31,7 @@
 {{--                                 15<a href="#">
                                     <i class="fa fa-comment-o fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Komentuoti..."></i>
                                 </a> --}}
-                                <span>{{ $quote->likes()->count('like') }}</span>
+                                <span>{{ $quote->likes_count }}</span>
                                 <a href="{{ route('login') }}">
                                     <i class="fa fa-heart-o fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Prisijunk ir sukurk savo kolekciją..."></i>
                                 </a>

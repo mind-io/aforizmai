@@ -14,11 +14,11 @@
     <div class="row">
 
         {{-- Left div --}}
-        <div class="col-md-8" style="padding-left: 30px;">
+        <div class="col-md-8 left-column">
 
             {{-- Header --}}
             <div>
-                <h3>{{ $slug->name }} <span class="badge">&nbsp;Aforizmų: {{ $slug->quotes()->Approved()->count() }}&nbsp;</span></h3>
+                <h3>{{ $slug->name }} <span class="badge">&nbsp;Aforizmų: {{ $slug->approved_quotes_count }}&nbsp;</span></h3>
             </div>
 
             {{-- Breadcrumb --}}
@@ -34,7 +34,7 @@
             @include('includes.blockquote')
 
             {{-- Pagination --}}
-            <div>
+            <div class="paginate">
                 <nav>
                     <ul class="pagination">
                         {{ $quotes->links() }}
@@ -45,34 +45,7 @@
         </div>{{-- /col-md-8 --}}
 
         {{-- Right div --}}
-        <div class="col-md-4" style="padding-left: 30px; margin-top:21px;">
-
-            {{-- Author selector --}}
-            <div class="well">
-                <form class="form" method="POST" action="{{ route('authors.select') }}">
-                {{ csrf_field() }}
-                    <div class="form-group input-group-lg {{ $errors->has('author_id') ? ' has-error' : '' }}">
-                        <label class="control-label" for="author_id"><h4>Filtruoti pagal autorių:</h4></label>
-                        <select id="author_id" class="form-control select2 input-lg" name="author_id">
-                            <option> </option>
-                            @foreach ($authors as $author)
-                                <option value="{{ $author->id }}">{{ $author->name }} ({{ $author->quotes_count }})</option>
-                            @endforeach
-                        </select>
-                        @if ($errors->has('author_id'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('author_id') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                    <div>
-                        <button type="submit" class="btn btn-success btn-block">
-                            <i class="fa fa-fw fa-filter"></i> Filtruoti
-                        </button>
-                        <br>
-                    </div>
-                </form>
-            </div>{{-- /Author selector --}}
+        <div class="col-md-4 right-column">
 
             {{-- Author Bio     --}}
             <div class="well">
@@ -94,6 +67,33 @@
                     </tbody>
                 </table>
             </div>{{-- /Author bio --}}
+
+            {{-- Author selector --}}
+            <div class="well">
+                <form class="form" method="POST" action="{{ route('authors.select') }}">
+                {{ csrf_field() }}
+                    <div class="form-group input-group-lg {{ $errors->has('author_id') ? ' has-error' : '' }}">
+                        <label class="control-label" for="author_id"><h4>Filtruoti pagal autorių:</h4></label>
+                        <select id="author_id" class="form-control select2 input-lg" name="author_id">
+                            <option> </option>
+                            @foreach ($authors as $author)
+                                <option value="{{ $author->id }}">{{ $author->name }} ({{ $author->approved_quotes_count }})</option>
+                            @endforeach
+                        </select>
+                        @if ($errors->has('author_id'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('author_id') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-success btn-block">
+                            <i class="fa fa-fw fa-filter"></i> Filtruoti
+                        </button>
+                        <br>
+                    </div>
+                </form>
+            </div>{{-- /Author selector --}}
 
         </div>{{-- /col-md-4 --}}
     </div>{{-- /row --}}

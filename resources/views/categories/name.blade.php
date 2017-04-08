@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-        Kategorija - {{ $slug->name }}
+    Kategorija - {{ $slug->name }}
 @endsection
 
 @section('content')
@@ -9,12 +9,12 @@
 
     <div class="row">
 
-        <div class="col-md-8" style="padding-left: 30px;">
+        <div class="col-md-8 left-column">
 
             {{-- Header --}}
             <div>
                 <h3>{{ $slug->name }} 
-                    <span class="badge">&nbsp;Aforizmų: {{ $slug->quotes()->Approved()->count() }}&nbsp;</span>
+                    <span class="badge">&nbsp;Aforizmų: {{ $slug->approved_quotes_count }}&nbsp;</span>
                     <br><small>{{ $slug->description }}</small>
                 </h3>
             </div>
@@ -32,7 +32,7 @@
             @include('includes.blockquote')
 
             {{-- Pagination --}}
-            <div>
+            <div class="paginate">
                 <nav>
                     <ul class="pagination">
                         {{ $quotes->links() }}
@@ -42,7 +42,7 @@
 
         </div>{{-- /col-md-8 --}}
 
-        <div class="col-md-4" style="padding-left: 30px; margin-top:21px;">
+        <div class="col-md-4 right-column">
 
             <div class="panel panel-success">
                 <div class="panel-heading">

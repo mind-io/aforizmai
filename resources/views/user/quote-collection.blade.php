@@ -15,60 +15,28 @@
     <div class="row">
 
         {{-- Left col --}}
-        <div class="col-md-8" style="padding-left: 30px;">
+        <div class="col-md-8 left-column">
 
             {{-- Header --}}
             <div>
-                <h3>Mano aforizmų kolekcija <small>(visos temos)</small></h3>
+                <h3>Mano aforizmų kolekcija <small>(visi)</small></h3>
             </div>
 
             {{-- Breadcrumb --}}
             <div>
                 <ol class="breadcrumb" style="margin: 0px;">
                   <li><a href="{{ route('index') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                  <li><a href="{{ route('categories.index') }}">Kategorijos</a></li>
-                  <li class="active">Visos</li>
+                  <li><a href="{{ route('user.quote.collection.index') }}">Mano kolekcija</a></li>
+                  <li class="active">Visi</li>
                 </ol>
             </div>
 
-            <!-- Blockquote div -->
-            <div>
-                @foreach ($quotes as $quote)
+            <!-- Blockquote include -->
+            @include('includes.blockquote-user')
 
-                    <blockquote>
-
-                        {{-- Quote content --}}
-                        <p>{{ $quote->quote }}</p> 
-                        <cite>
-                            <a href="#">{{ $quote->author->name }}</a> |
-                            <a href="#">{{ $quote->category->name }}</a>
-                        </cite>
-
-                        {{-- Quote fa buttons --}}
-                        <p align="right" data-quoteid="{{ $quote->id }}">
-
-                            {{-- Checking if the user has like --}}
-                            @if(Auth::user()->likes()->where('quote_id', $quote->id)->first() )
-                                <span>{{ $quote->likes()->count('like') }}</span>
-                                <a href="#" class="like">
-                                    <i class="fa fa-heart fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Pridėti į kolekciją..."></i>
-                                </a>
-                            {{-- user has no like --}}
-                            @else
-                                <span>{{ $quote->likes()->count('like') }}</span>
-                                <a href="#" class="like">
-                                    <i class="fa fa-heart-o fa-lg fa-fw" data-toggle="tooltip" data-placement="top" title="Pridėti į kolekciją..."></i>
-                                </a>
-                            @endif
-                        </p>{{-- //fa buttons paragraph --}}
-
-                    </blockquote>
-                    
-                @endforeach
-            </div>
 
             {{-- Pagination --}}
-            <div>
+            <div class="paginate">
                 <nav>
                     <ul class="pagination">
                         {{ $quotes->links() }}
@@ -79,7 +47,7 @@
         </div>{{-- /Left col-md-8 --}}
 
         {{-- Right col --}}
-        <div class="col-md-4" style="padding-left: 30px; margin-top:21px;">
+        <div class="col-md-4 right-column">
 
 			{{-- Quote categories panel --}}
             <div class="panel panel-info">
@@ -89,12 +57,10 @@
                 <div class="panel-body">
                     <div class="list-group">
                         @foreach ($categories as $category)
-                            @if(count($category->quotes) > 0)
-                                <a href="#" class="list-group-item">
-                                <span class="badge">{{ $category->quotes()->count() }}</span>
-                                <h4 class="list-group-item-heading">{{ $category->name }}</h4>
-                                <p class="list-group-item-text">{{ $category->description }}</p></a>
-                            @endif
+                            <a href="{{ route('user.quote.collection.category', ['slug' => $category->slug]) }}" class="list-group-item">
+                            <span class="badge">{{ $category->quotes_count }}</span>
+                            <h4 class="list-group-item-heading">{{ $category->name }}</h4>
+                            <p class="list-group-item-text">{{ $category->description }}</p></a>
                         @endforeach
                     </div>
                 </div>
@@ -102,16 +68,14 @@
 
             {{-- Author selector --}}
             <div class="well">
-                <form class="form" method="POST" action="{{ route('authors.select') }}">
+                <form class="form" method="POST" action="{{ route('user.quote.collection.author.select') }}">
                 {{ csrf_field() }}
                     <div class="form-group input-group-lg {{ $errors->has('author_id') ? ' has-error' : '' }}">
                         <label class="control-label" for="author_id"><h4>Filtruoti pagal autorių:</h4></label>
                         <select id="author_id" class="form-control select2 input-lg" name="author_id">
                             <option> </option>
                             @foreach ($authors as $author)
-                                @if(count($author->quotes) > 0)
-                                    <option value="{{ $author->id }}">{{ $author->name }} ({{ $author->quotes()->Approved()->count() }})</option>
-                                @endif
+                                <option value="{{ $author->id }}">{{ $author->name }} ({{ $author->quotes_count }})</option>
                             @endforeach
                         </select>
                         @if ($errors->has('author_id'))

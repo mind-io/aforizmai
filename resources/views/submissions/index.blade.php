@@ -13,7 +13,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 left-column">
 
             {{-- Header --}}
             <div>
@@ -35,7 +35,8 @@
             <div>
                 <ol class="breadcrumb" style="margin: 0px;">
                   <li><a href="{{ route('index') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                  <li class="active">Visi nepatvirtinti</li>
+                  <li><a href="{{ route('submissions.index') }}">Nepatvirtinti aforizmai</a></li>
+                  <li class="active">Visi</li>
                 </ol>
             </div>
 
@@ -43,7 +44,7 @@
             @include('includes.blockquote-submission')
 
             {{-- Pagination --}}
-            <div>
+            <div class="paginate">
                 <nav>
                     <ul class="pagination">
                         {{ $quotes->links() }}
@@ -53,7 +54,7 @@
 
         </div>{{-- /col-md-8 --}}
 
-        <div class="col-md-4">
+        <div class="col-md-4 right-column">
 
             {{-- Quote categories panel --}}
             <div class="panel panel-primary">
@@ -63,12 +64,10 @@
                 <div class="panel-body">
                     <div class="list-group">
                         @foreach ($categories as $category)
-                            @if(count($category->quotes) > 0)
-                                <a href="{{ route('submissions.categories.name', ['slug' => $category->slug]) }}" class="list-group-item list-group-item-default">
-                                <span class="badge">{{ $category->quotes()->NotApproved()->count() }}</span>
-                                <h4 class="list-group-item-heading">{{ $category->name }}</h4>
-                                <p class="list-group-item-text">{{ $category->description }}</p></a>
-                            @endif
+                            <a href="{{ route('submissions.categories.name', ['slug' => $category->slug]) }}" class="list-group-item list-group-item-default">
+                            <span class="badge">{{ $category->not_approved_quotes_count }}</span>
+                            <h4 class="list-group-item-heading">{{ $category->name }}</h4>
+                            <p class="list-group-item-text">{{ $category->description }}</p></a>
                         @endforeach
                     </div>
                 </div>
@@ -83,9 +82,7 @@
                         <select id="author_id" class="form-control select2 input-lg" name="author_id">
                             <option> </option>
                             @foreach ($authors as $author)
-                                @if(count($author->quotes) > 0)
-                                    <option value="{{ $author->id }}">{{ $author->name }} ({{ $author->quotes()->NotApproved()->count() }})</option>
-                                @endif
+                                <option value="{{ $author->id }}">{{ $author->name }} ({{ $author->not_approved_quotes_count }})</option>
                             @endforeach
                         </select>
                         @if ($errors->has('author_id'))

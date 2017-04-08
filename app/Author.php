@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
+// use DB;
 
 class Author extends Model
 {
@@ -12,6 +12,16 @@ class Author extends Model
     {
     	return $this->hasMany('App\Quote');
     }
+
+    public function approvedQuotes()
+    {
+        return $this->quotes()->approved();
+    }    
+
+    public function notApprovedQuotes()
+    {
+        return $this->quotes()->notApproved();
+    }      
 
     // protected $table = 'authors';
     // protected $fillable = ['name'];

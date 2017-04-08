@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Quote extends Model
 {
     
@@ -41,6 +42,11 @@ class Quote extends Model
         return $this->hasMany('App\Like');
     }
 
+    public function userFavoriteQuotes()
+    {
+        return $this->likes()->userLikes();
+    }       
+
 
     // define local scopes to filter quotes and submissions
     
@@ -53,6 +59,5 @@ class Quote extends Model
     {
         $query->where('approved', false);
     }
-
 
 }

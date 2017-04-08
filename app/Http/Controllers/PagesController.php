@@ -8,8 +8,8 @@ use App\Category;
 use App\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Scopes\QuoteScope;
-use App\Scopes\SubmissionScope;
+// use App\Scopes\QuoteScope;
+// use App\Scopes\SubmissionScope;
 
 class PagesController extends Controller
 {
@@ -38,7 +38,10 @@ class PagesController extends Controller
 
     public function getCategoriesIndex() {
 
-        $quotes = Quote::approved()->orderBy('created_at', 'desc')->paginate(5);
+        $quotes = Quote::approved()
+            ->withCount('likes')
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
 
         $categories = Category::has('approvedQuotes')
             ->withCount('approvedQuotes')
@@ -50,9 +53,15 @@ class PagesController extends Controller
 
     public function getCategoriesName($slug) {
 
-        $slug = Category::where('slug', $slug)->first();
+        $slug = Category::where('slug', $slug)
+            ->withCount('approvedQuotes')
+            ->first();
 
-        $quotes = $slug->quotes()->approved()->orderBy('created_at', 'desc')->paginate(5);
+        $quotes = $slug->quotes()
+            ->approved()
+            ->withCount('likes')            
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
         
         $categories = Category::has('approvedQuotes')
             ->withCount('approvedQuotes')
@@ -64,34 +73,37 @@ class PagesController extends Controller
     
     public function getAuthorsIndex() {
     
-        $quotes = Quote::Approved()->orderBy('created_at', 'desc')->paginate(5);
-        $authors = Author::whereHas('quotes', function ($query) {
-            $query->where('approved', true);
-        })
-        ->withCount(['quotes' => function ($query) {
-            $query->where('approved', true);
-        }])
-        ->orderBy('name', 'asc')
-        ->get();
+        $quotes = Quote::Approved()
+            ->withCount('likes')        
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
+
+        $authors = Author::has('approvedQuotes')
+            ->withCount('approvedQuotes')
+            ->orderBy('name')
+            ->get();
  
-        return view('authors.index', ['quotes' => $quotes, 'authors' => $authors]);
+        return view('authors.index', compact('quotes', 'authors'));
     }
 
     public function getAuthorsName($slug)
     {
-        $slug = Author::where('slug', $slug)->first();
-        $authors = Author::whereHas('quotes', function ($query) {
-            $query->where('approved', true);
-        })
-        ->withCount(['quotes' => function ($query) {
-            $query->where('approved', true);
-        }])
-        ->orderBy('name', 'asc')
-        ->get();
+        $slug = Author::where('slug', $slug)
+            ->withCount('approvedQuotes')
+            ->first();
         
-        $quotes = $slug->quotes()->Approved()->orderBy('created_at', 'desc')->paginate(5);
+        $quotes = $slug->quotes()
+            ->Approved()
+            ->withCount('likes')            
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
 
-        return view('authors.name', ['quotes' => $quotes, 'slug' => $slug, 'authors' => $authors]);
+        $authors = Author::has('approvedQuotes')
+            ->withCount('approvedQuotes')
+            ->orderBy('name')
+            ->get();
+ 
+        return view('authors.name', compact('slug', 'quotes', 'authors'));
     }
 
     // Author selector for Approved
@@ -111,35 +123,55 @@ class PagesController extends Controller
 
     public function getSubmissionsIndex() {
 
-        $quotes = Quote::NotApproved()->orderBy('created_at', 'desc')->paginate(5);
-        $categories = Category::whereHas('quotes', function ($query) {
-            $query->where('approved', false);
-        })->get();
-        $authors = Author::whereHas('quotes', function ($query) {
-            $query->where('approved', false);
-        })->get();
-        
-        return view('submissions.index', ['quotes' => $quotes, 'categories' => $categories, 'authors' => $authors]);
+        $quotes = Quote::NotApproved()
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
+
+        $categories = Category::has('notApprovedQuotes')
+            ->withCount('notApprovedQuotes')
+            ->orderBy('id')
+            ->get();
+
+        $authors = Author::has('notApprovedQuotes')
+            ->withCount('notApprovedQuotes')
+            ->orderBy('name')
+            ->get();
+
+        return view('submissions.index', compact('quotes', 'categories', 'authors'));
     }
 
     public function getSubmissionsCategoriesName($slug) {
 
         $slug = Category::where('slug', $slug)->first();
-        $categories = Category::whereHas('quotes', function ($query) {
-            $query->where('approved', false);
-        })->orderBy('id', 'asc')->get();
-        $quotes = $slug->quotes()->NotApproved()->orderBy('created_at', 'desc')->paginate(5);
-        return view('submissions.categories.name', ['quotes' => $quotes, 'slug' => $slug, 'categories' => $categories]);
+
+        $quotes = $slug->quotes()
+            ->NotApproved()
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
+
+        $categories = Category::has('notApprovedQuotes')
+            ->withCount('notApprovedQuotes')
+            ->orderBy('id')
+            ->get();
+
+        return view('submissions.categories.name', compact('slug', 'quotes', 'categories'));
     }
     
     public function getSubmissionsAuthorsName($slug)
     {
         $slug = Author::where('slug', $slug)->first();
-        $authors = Author::whereHas('quotes', function ($query) {
-            $query->where('approved', false);
-        })->orderBy('name', 'asc')->get();
-        $quotes = $slug->quotes()->NotApproved()->orderBy('created_at', 'desc')->paginate(5);
-        return view('submissions.authors.name', ['quotes' => $quotes, 'slug' => $slug, 'authors' => $authors]);
+
+        $quotes = $slug->quotes()
+            ->NotApproved()
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);
+
+        $authors = Author::has('notApprovedQuotes')
+            ->withCount('notApprovedQuotes')
+            ->orderBy('name')
+            ->get();
+
+        return view('submissions.authors.name', compact('slug', 'quotes', 'authors'));
     }
 
     // Author selector for NotApproved

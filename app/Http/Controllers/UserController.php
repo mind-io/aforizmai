@@ -42,20 +42,33 @@ class UserController extends Controller
 
     public function userQuoteCollectionIndex()
     {
-        $quotes = Quote::whereHas('likes', function ($query) {
-            $userID = Auth::user()->id;
-            $query->where('user_id', $userID);
-        })->paginate(5);
-        
+        // $quotes = Quote::whereHas('likes', function ($query) {
+        //     $userID = Auth::user()->id;
+        //     $query->where('user_id', $userID);
+        // })->paginate(5);
+
+        $quotes = Quote::has('userFavoriteQuotes')
+            ->withCount('likes')
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);      
+
         $categories = Category::whereHas('quotes.likes', function ($query) {
-            $userID = Auth::user()->id;
-            $query->where('user_id', $userID);
-        })->get();
+            $query->userLikes();
+        })
+        ->withCount(['quotes' => function ($query) {
+            $query->has('userFavoriteQuotes');
+        }])
+        ->orderBy('id')
+        ->get();
 
         $authors = Author::whereHas('quotes.likes', function ($query) {
-            $userID = Auth::user()->id;
-            $query->where('user_id', $userID);
-        })->get();        
+            $query->userLikes();
+        })
+        ->withCount(['quotes' => function ($query) {
+            $query->has('userFavoriteQuotes');
+        }])
+        ->orderBy('name')
+        ->get();
 
         return view('user.quote-collection', [
             'user' => Auth::user(), 
@@ -63,6 +76,81 @@ class UserController extends Controller
             'categories' => $categories,
             'authors' => $authors
             ]);
+    }
+
+    public function userQuoteCollectionCategory($slug)
+    {
+
+        $slug = Category::where('slug', $slug)
+            ->withCount(['quotes' => function ($query) {
+                $query->has('userFavoriteQuotes');
+        }])->first();
+
+        $quotes = $slug->quotes()
+            ->has('userFavoriteQuotes')
+            ->withCount('likes')
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);      
+
+        $categories = Category::whereHas('quotes.likes', function ($query) {
+            $query->userLikes();
+        })
+        ->withCount(['quotes' => function ($query) {
+            $query->has('userFavoriteQuotes');
+        }])
+        ->orderBy('id')
+        ->get();
+
+        return view('user.quote-collection-category', [
+            'user' => Auth::user(),
+            'slug' => $slug,
+            'quotes' => $quotes,
+            'categories' => $categories
+            ]);
+    }
+
+    public function userQuoteCollectionAuthor($slug)
+    {
+
+        $slug = Author::where('slug', $slug)
+            ->withCount(['quotes' => function ($query) {
+                $query->has('userFavoriteQuotes');
+        }])->first();
+        
+        $quotes = $slug->quotes()
+            ->has('userFavoriteQuotes')
+            ->withCount('likes')
+            ->orderBy('created_at', 'desc')
+            ->paginate(5);      
+
+        $authors = Author::whereHas('quotes.likes', function ($query) {
+            $query->userLikes();
+        })
+        ->withCount(['quotes' => function ($query) {
+            $query->has('userFavoriteQuotes');
+        }])
+        ->orderBy('name')
+        ->get();
+
+        return view('user.quote-collection-author', [
+            'user' => Auth::user(),
+            'slug' => $slug,
+            'quotes' => $quotes,
+            'authors' => $authors
+            ]);        
+    }
+
+    // Author selector for User Collection
+    public function userQuoteCollectionAuthorSelect(Request $request)
+    {
+        $this->validate($request, [
+            'author_id' => 'required|integer'
+        ]);
+        $authorID = $request['author_id'];
+        $author = Author::where('id', $authorID)->first();
+        $slug = $author->slug;
+
+        return redirect()->action('UserController@userQuoteCollectionAuthor', ['slug' => $slug]);
     }
 
     public function postVoteSubmission(Request $request)
