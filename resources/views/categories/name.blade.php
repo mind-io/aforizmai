@@ -23,7 +23,7 @@
             <div>
                 <ol class="breadcrumb" style="margin: 0px;">
                   <li><a href="{{ route('index') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                  <li><a href="{{ route('categories.index') }}">Kategorijos</a></li>
+                  <li><a href="{{ route('category.index') }}">Kategorijos</a></li>
                   <li class="active">{{ $slug->name }}</li>
                 </ol>
             </div>
@@ -51,7 +51,7 @@
                 <div class="panel-body">
                     <div class="list-group">
                         @foreach ($categories as $category)
-                            <a href="{{ route('categories.name', ['slug' => $category->slug]) }}" 
+                            <a href="{{ route('category.name', ['slug' => $category->slug]) }}"
                                 @if (Request::segment(2) == $category->slug)
                                     class="list-group-item list-group-item-success disabled"
                                 @else

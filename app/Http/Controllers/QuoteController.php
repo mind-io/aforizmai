@@ -15,19 +15,14 @@ use Illuminate\Support\Facades\Response;
 class QuoteController extends Controller
 {
 
-    public function getSubmitForm() 
+    public function createQuote() 
     {
         $categories = Category::orderBy('id', 'asc')->get();
         return view('submissions.create', ['categories' => $categories]);
     }
 
-    public function getAuthorAutocomplete(Request $request)
-    {
-        $data = Author::select("name")->where("name","LIKE","%{$request->input('query')}%")->get();
-        return response()->json($data);
-    }
 
-    public function submitQuote(Request $request)
+    public function storeQuote(Request $request)
     {
         $this->validate($request, [
             'name'          => 'required|max:60|alpha_spaces',
@@ -91,7 +86,7 @@ class QuoteController extends Controller
             }
             fclose($handle);
         }
-        return Category::withCount('quotes')->get();
+        return Author::withCount('quotes')->get();
     }
 
 

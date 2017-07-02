@@ -6,8 +6,8 @@
                         {{-- Quote content --}}
                         <p>{{ $quote->quote }}</p> 
                         <cite>
-                            <a href="{{ route('authors.name', ['slug' => $quote->author->slug]) }}">{{ $quote->author->name }}</a> |
-                            <a href="{{ route('categories.name', ['slug' => $quote->category->slug]) }}">{{ $quote->category->name }}</a>
+                            <a href="{{ route('author.name', ['slug' => $quote->author->slug]) }}">{{ $quote->author->name }}</a> |
+                            <a href="{{ route('category.name', ['slug' => $quote->category->slug]) }}">{{ $quote->category->name }}</a>
                         </cite>
 
                         {{-- Quote buttons --}}

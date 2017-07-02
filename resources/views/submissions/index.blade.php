@@ -64,7 +64,7 @@
                 <div class="panel-body">
                     <div class="list-group">
                         @foreach ($categories as $category)
-                            <a href="{{ route('submissions.categories.name', ['slug' => $category->slug]) }}" class="list-group-item list-group-item-default">
+                            <a href="{{ route('submissions.category.name', ['slug' => $category->slug]) }}" class="list-group-item list-group-item-default">
                             <span class="badge">{{ $category->not_approved_quotes_count }}</span>
                             <h4 class="list-group-item-heading">{{ $category->name }}</h4>
                             <p class="list-group-item-text">{{ $category->description }}</p></a>
@@ -75,7 +75,7 @@
 
             {{-- Quote Author selector --}}
             <div class="well">
-                <form class="form" method="POST" action="{{ route('submissions.authors.select') }}">
+                <form class="form" method="POST" action="{{ route('submissions.author.select') }}">
                 {{ csrf_field() }}
                     <div class="form-group input-group-lg {{ $errors->has('author_id') ? ' has-error' : '' }}">
                         <label class="control-label" for="author_id"><h4>Filtruoti pagal autorių:</h4></label>

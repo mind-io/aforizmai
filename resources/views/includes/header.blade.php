@@ -16,10 +16,10 @@
       <ul class="nav navbar-nav">
 
         <li class="dropdown">
-          <a href="{{ route('categories.index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book fa-lg fa-fw" aria-hidden="true"></i> Oficiali kolekcija <span class="caret"></span></a>
+          <a href="{{ route('category.index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book fa-lg fa-fw" aria-hidden="true"></i> Oficiali kolekcija <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{ route('categories.index') }}">Aforizmai pagal temą</a></li>
-            <li><a href="{{ route('authors.index') }}">Aforizmai pagal autorių</a></li>
+            <li><a href="{{ route('category.index') }}">Aforizmai pagal temą</a></li>
+            <li><a href="{{ route('author.index') }}">Aforizmai pagal autorių</a></li>
             <li><a href="#">Naujienos</a></li>
             <li><a href="#">Mėgstamiausių TOP-50</a></li>
             <li><a href="#">Komentuojamų TOP-50</a></li>

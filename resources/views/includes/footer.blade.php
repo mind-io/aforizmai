@@ -4,8 +4,8 @@
 		<div class="row">
 			<div class="col-md-3 footer-left-column text-muted">
 				<h4>Oficiali kolekcija</h4>
-				<p><a href="{{ route('categories.index') }}">Aforizmai pagal temą</a></p>
-				<p><a href="{{ route('authors.index') }}">Aforizmai pagal autorių</a></p>
+				<p><a href="{{ route('category.index') }}">Aforizmai pagal temą</a></p>
+				<p><a href="{{ route('author.index') }}">Aforizmai pagal autorių</a></p>
 				<p>Naujausi aforizmai</p>
 			</div>
 			<div class="col-md-3 footer-left-column text-muted">

@@ -25,7 +25,7 @@
             <div>
                 <ol class="breadcrumb" style="margin: 0px;">
                   <li><a href="{{ route('index') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                  <li><a href="{{ route('authors.index') }}">Autoriai</a></li>
+                  <li><a href="{{ route('author.index') }}">Autoriai</a></li>
                   <li class="active">{{ $slug->name }} </li>
                 </ol>
             </div>
@@ -70,7 +70,7 @@
 
             {{-- Author selector --}}
             <div class="well">
-                <form class="form" method="POST" action="{{ route('authors.select') }}">
+                <form class="form" method="POST" action="{{ route('author.select') }}">
                 {{ csrf_field() }}
                     <div class="form-group input-group-lg {{ $errors->has('author_id') ? ' has-error' : '' }}">
                         <label class="control-label" for="author_id"><h4>Filtruoti pagal autorių:</h4></label>

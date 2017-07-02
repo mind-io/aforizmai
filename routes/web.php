@@ -1,152 +1,60 @@
 <?php
 
-// Routes for Approved quotes
+Route::get('/vue', ['as' => 'vue', 'uses' => 'PagesController@getVue']);
 
-Route::get('/', [
-	'uses' => 'PagesController@getIndex', 
-	'as' => 'index'
-]);
-
-Route::get('/vue', [
-	'uses' => 'PagesController@getVue',
-	'as' => 'vue'
-]);
-
-Route::get('/kategorijos', [
-	'uses' => 'PagesController@getCategoryIndex',
-	'as' => 'categories.index'
-]);
-
-Route::get('/kategorijos/{slug}', [
-	'uses' => 'PagesController@getCategoryName',
-	'as' => 'categories.name'
-]);
-
-Route::get('/autoriai', [ 
-	'uses' => 'PagesController@getAuthorIndex',
-	'as' => 'authors.index'
-]);
-
-Route::get('/autoriai/{slug}', [ 
-	'uses' => 'PagesController@getAuthorName',
-	'as' => 'authors.name'
-]);
-
-Route::post('/autoriai', [ 
-	'uses' => 'PagesController@postAuthorSelect',
-	'as' => 'authors.select'
-]);
-
-Route::get('topautoriai', [
-	'uses' => 'AuthorController@getPopularAuthors',
-	'as' => 'authors.popular'
-]);
-
-Route::post('/like', [
-	'uses' => 'UserController@postLikeQuote',
-	'as' => 'like.quote',
-	'middleware' => 'auth'
-]);
+Route::get('/', 						['as' => 'index', 				'uses' => 'PagesController@getIndex']);
+Route::get('/nepatvirtinti-aforizmai', 	['as' => 'submissions.index', 	'uses' => 'PagesController@getSubmissionsIndex']);
 
 
-
-// Routes for NoptApproved quotes (Submissions)
-
-Route::get('/naujas-aforizmas', [
-	'uses' => 'QuoteController@getSubmitForm',
-	'as' => 'submissions.create'
-]);
-
-Route::group(['prefix' => '/nauji-aforizmai'], function() {
+// Category routes
+Route::get('/kategorijos', 			['as' => 'category.index', 'uses' => 'CategoryController@getCategoryIndex']);
+Route::get('/kategorijos/{slug}', 	['as' => 'category.name', 'uses' => 'CategoryController@getCategoryName']);
+// Category route for Submissions
+Route::get('nepatvirtinti-aforizmai/kategorijos/{slug}', ['as' => 'submissions.category.name', 'uses' => 'CategoryController@getSubmissionsCategoryName']);
 
 
-	Route::post('/create', [
-		'uses' => 'QuoteController@submitQuote',
-		'as' => 'submissions.store',
-		'middleware' => 'auth'
+// Author routes
+Route::get('/autoriai', 		['as' => 'author.index', 'uses' => 'AuthorController@getAuthorIndex']);
+Route::get('/autoriai/{slug}',  ['as' => 'author.name', 'uses' => 'AuthorController@getAuthorName']);
+// Author route for Submissions
+Route::get('nepatvirtinti-aforizmai/autoriai/{slug}', ['as' => 'submissions.author.name', 'uses' => 'AuthorController@getSubmissionsAuthorName']);
 
-	]);
+// Author selectors
+Route::post('/autoriai', 						['as' => 'author.select', 'uses' => 'AuthorController@postAuthorSelect']);
+Route::post('nepatvirtinti-aforizmai/autoriai', ['as' => 'submissions.author.select', 'uses' => 'AuthorController@postSubmissionsAuthorSelect']);
 
 
-	Route::get('/autocomplete', [
-		'uses'=>'QuoteController@getAuthorAutocomplete',
-		'as'=>'submissions.authors.autocomplete'
-	]);
+// Like route for Approved Quotes
+Route::post('/like', ['as' => 'like.quote',	'uses' => 'LikeController@postLikeQuote', 'middleware' => 'auth']);
 
-	Route::get('/', [
-		'uses' => 'PagesController@getSubmissionsIndex',
-		'as' => 'submissions.index'
-	]);
+// Vote route for notApproved Quotes
+Route::post('nepatvirtinti-aforizmai/vote', ['as' => 'submissions.vote', 'uses' => 'VoteController@postVoteSubmission',	'middleware' => 'auth']);
 
-	Route::get('/kategorijos/{slug}', [
-		'uses' => 'PagesController@getSubmissionsCategoriesName',
-		'as' => 'submissions.categories.name'
-	]);
 
-	Route::get('/autoriai/{slug}', [ 
-		'uses' => 'PagesController@getSubmissionsAuthorsName',
-		'as' => 'submissions.authors.name'
-	]);
-
-	Route::post('/autoriai', [ 
-		'uses' => 'PagesController@postSubmissionsAuthorsSelect',
-		'as' => 'submissions.authors.select'
-	]);
-
-	Route::post('/vote', [
-		'uses' => 'UserController@postVoteSubmission',
-		'as' => 'submissions.vote',
-		'middleware' => 'auth'
-	]);
-
-});
+// New Quote (Submission)
+Route::get('/naujas-aforizmas',  ['as' => 'submissions.create', 'uses' => 'QuoteController@createQuote']);
+Route::post('/naujas-aforizmas', ['as' => 'submissions.store', 'uses' => 'QuoteController@storeQuote',	'middleware' => 'auth']);
+// Typehead Author autocomplete in the form field
+Route::get('/naujas-aforizmas/autocomplete', ['as'=>'submissions.author.autocomplete', 'uses'=>'AuthorController@getAuthorAutocomplete']);
 
 
 
 // CSV import
-Route::get('/csv', [
-	'uses' => 'QuoteController@getCSV',
-	'as' => 'csv.import'
-]);
+Route::get('/csv', ['as' => 'csv.import', 'uses' => 'QuoteController@getCSV']);
+
 
 Auth::routes();
-
 Route::get('/logout', 'Auth\LoginController@logout');
 
 
 // User routes
 Route::group(['prefix' => '/user', 'middleware' => 'auth'], function() {
-
-	Route::get('/profile', [
-		'uses' => 'UserController@userProfile',
-		'as' => 'user.profile'
-	]);
-
-	Route::post('/profile', [
-		'uses' => 'UserController@userProfileUpdate',
-		'as' => 'user.profile.update'
-	]);
-
-	Route::get('/collection', [
-		'uses' => 'UserController@userQuoteCollectionIndex',
-		'as' => 'user.quote.collection.index'
-	]);
-
-	Route::get('/collection/kategorijos/{slug}', [
-		'uses' => 'UserController@userQuoteCollectionCategory',
-		'as' => 'user.quote.collection.category'
-	]);
-
-	Route::get('/collection/autoriai/{slug}', [ 
-		'uses' => 'UserController@userQuoteCollectionAuthor',
-		'as' => 'user.quote.collection.author'
-	]);	
-
-	Route::post('/autoriai', [ 
-		'uses' => 'UserController@userQuoteCollectionAuthorSelect',
-		'as' => 'user.quote.collection.author.select'
-	]);
-	
+	Route::get('/profile', 							['as' => 'user.profile', 'uses' => 'UserController@userProfile']);
+	Route::post('/profile', 						['as' => 'user.profile.update', 'uses' => 'UserController@userProfileUpdate']);
+	Route::get('/collection', 						['as' => 'user.quote.collection.index', 'uses' => 'UserController@userQuoteCollectionIndex']);
+	Route::get('/collection/kategorijos/{slug}', 	['as' => 'user.quote.collection.category', 'uses' => 'UserController@userQuoteCollectionCategory']);
+	Route::get('/collection/autoriai/{slug}', 	 	['as' => 'user.quote.collection.author', 'uses' => 'UserController@userQuoteCollectionAuthor']);
+	Route::post('/collection/autoriai', 			['as' => 'user.quote.collection.author.select', 'uses' => 'UserController@userQuoteCollectionAuthorSelect']);
 });
 
 

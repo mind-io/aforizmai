@@ -7,8 +7,8 @@
                             <p>{{ $quote->quote }}</p>
 
                             <cite>
-                                <a href="{{ route('submissions.authors.name', ['slug' => $quote->author->slug]) }}">{{ $quote->author->name }}</a> |
-                                <a href="{{ route('submissions.categories.name', ['slug' => $quote->category->slug]) }}">{{ $quote->category->name }}</a>
+                                <a href="{{ route('submissions.author.name', ['slug' => $quote->author->slug]) }}">{{ $quote->author->name }}</a> |
+                                <a href="{{ route('submissions.category.name', ['slug' => $quote->category->slug]) }}">{{ $quote->category->name }}</a>
                             </cite>
 
                             {{-- fa buttons --}}

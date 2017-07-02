@@ -26,7 +26,7 @@
             <div>
                 <ol class="breadcrumb" style="margin: 0px;">
                   <li><a href="{{ route('index') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                  <li><a href="{{ route('authors.index') }}">Autoriai</a></li>
+                  <li><a href="{{ route('author.index') }}">Autoriai</a></li>
                   <li class="active">Visi autoriai</li>
                 </ol>
             </div>
@@ -55,8 +55,8 @@
                     <tbody>
                         @foreach ($topauthors as $topauthor)
                         <tr>
-                            <td><a href="{{ route('authors.name', ['slug' => $topauthor->slug]) }}">{{ $topauthor->name }}</a></td>
-                            <td><span class="badge">{{ $topauthor->likes_count }} <i class="fa fa-heart-o fa-fw"></i></span></td>
+                            <td><a href="{{ route('author.name', ['slug' => $topauthor->slug]) }}">{{ $topauthor->name }}</a></td>
+                            <td><span class="badge">{{ $topauthor->likes_count }} <i class="fa fa-heart fa-fw"></i></span></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -65,7 +65,7 @@
 
             {{-- Author selector --}}
             <div class="well">
-                <form class="form" method="POST" action="{{ route('authors.select') }}">
+                <form class="form" method="POST" action="{{ route('author.select') }}">
                 {{ csrf_field() }}
                     <div class="form-group input-group-lg {{ $errors->has('author_id') ? ' has-error' : '' }}">
                         <label class="control-label" for="author_id"><h4>Filtruoti pagal autorių:</h4></label>

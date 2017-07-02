@@ -46,7 +46,7 @@
 
             {{-- Quote Author selector --}}
             <div class="well">
-                <form class="form" method="POST" action="{{ route('submissions.authors.select') }}">
+                <form class="form" method="POST" action="{{ route('submissions.author.select') }}">
                 {{ csrf_field() }}
                     <div class="form-group input-group-lg {{ $errors->has('author_id') ? ' has-error' : '' }}">
                         <label class="control-label" for="author_id"><h4>Filtruoti pagal autorių:</h4></label>

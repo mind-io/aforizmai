@@ -128,7 +128,7 @@
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script type="text/javascript">
-        var path = "{{ route('submissions.authors.autocomplete') }}";
+        var path = "{{ route('submissions.author.autocomplete') }}";
         $('input.typeahead').typeahead({
             source:  function (query, process) {
             return $.get(path, { query: query }, function (data) {

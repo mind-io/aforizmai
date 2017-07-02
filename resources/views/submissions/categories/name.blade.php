@@ -47,7 +47,7 @@
                 <div class="panel-body">
                     <div class="list-group">
                         @foreach ($categories as $category)
-                            <a href="{{ route('submissions.categories.name', ['slug' => $category->slug]) }}" 
+                            <a href="{{ route('submissions.category.name', ['slug' => $category->slug]) }}"
                                 @if (Request::segment(3) == $category->slug)
                                     class="list-group-item list-group-item-primary disabled"
                                 @else
