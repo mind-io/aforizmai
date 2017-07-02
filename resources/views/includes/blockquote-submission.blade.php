@@ -22,32 +22,32 @@
                                         {{-- user voted UP the quote     --}}
                                         @if(Auth::user()->votes()->where('quote_id', $quote->id)->first()->vote === 1)
                                             <a href="#" class="voteUp">
-                                                <i class="fa fa-thumbs-up fa-lg fa-fw flat-icon" aria-hidden="true"></i>
+                                                <i class="fa fa-thumbs-up fa-lg fa-fw" aria-hidden="true"></i>
                                             </a>
                                             <span class="badge votecount">{{ $quote->votes()->sum('vote') }}</span>
                                             <a href="#" class="voteDown">
-                                                <i class="fa fa-thumbs-o-down fa-lg fa-fw flat-icon" aria-hidden="true"></i>
+                                                <i class="fa fa-thumbs-o-down fa-lg fa-fw" aria-hidden="true"></i>
                                             </a>
 
                                         {{-- user voted DOWN the quote --}}
                                         @else
                                             <a href="#" class="voteUp">
-                                                <i class="fa fa-thumbs-o-up fa-lg fa-fw flat-icon" aria-hidden="true"></i>
+                                                <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i>
                                             </a>
                                             <span class="badge votecount">{{ $quote->votes()->sum('vote') }}</span>
                                             <a href="#" class="voteDown">
-                                                <i class="fa fa-thumbs-down fa-lg fa-fw flat-icon" aria-hidden="true"></i>
+                                                <i class="fa fa-thumbs-down fa-lg fa-fw" aria-hidden="true"></i>
                                             </a>
                                         @endif
 
                                     {{-- user has no vote --}}
                                     @else
                                         <a href="#" class="voteUp">
-                                            <i class="fa fa-thumbs-o-up fa-lg fa-fw flat-icon" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Balsuok Patinka!"></i>
+                                            <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Balsuok Patinka!"></i>
                                         </a>
                                         <span class="badge votecount">{{ $quote->votes()->sum('vote') }}</span>
                                         <a href="#" class="voteDown">
-                                            <i class="fa fa-thumbs-o-down fa-lg fa-fw flat-icon" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Balsuok Nepatinka!"></i>
+                                            <i class="fa fa-thumbs-o-down fa-lg fa-fw" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Balsuok Nepatinka!"></i>
                                         </a>
                                     @endif
 

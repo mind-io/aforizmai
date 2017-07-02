@@ -44,7 +44,7 @@
                                     <label for="name" class="control-label">Autoriaus vardas</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-search fa-fw" aria-hidden="true"></i></span>
-                                        <input id="name" type="text" class="typeahead form-control" name="name" autocomplete="off" placeholder="Vardas Pavardė (jeigu nežinomi - Anonimas, Liaudies išmintis ar pan.)" value="{{ old('name') }}">
+                                        <input id="name" type="text" class="typeahead form-control" name="name" autocomplete="off" placeholder="Vardas Pavardė (Anonimas, Liaudies išmintis ir pan.)" value="{{ old('name') }}">
                                     </div>
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -121,7 +121,7 @@
                 </div>{{-- /panel-body --}}
             </div>{{-- /panel --}}
         </div>{{-- /col-md-8 col-md-offset-2 --}}
-    </div>
+    </div>{{-- /row --}}
 </div>
 @endsection
 

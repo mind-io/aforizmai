@@ -36,7 +36,7 @@ class PagesController extends Controller
         return view('vue');
     }
 
-    public function getCategoriesIndex() {
+    public function getCategoryIndex() {
 
         $quotes = Quote::approved()
             ->withCount('likes')
@@ -51,7 +51,7 @@ class PagesController extends Controller
 		return view('categories.index', compact('quotes', 'categories'));
     }
 
-    public function getCategoriesName($slug) {
+    public function getCategoryName($slug) {
 
         $slug = Category::where('slug', $slug)
             ->withCount('approvedQuotes')
@@ -71,7 +71,8 @@ class PagesController extends Controller
         return view('categories.name', compact('slug', 'quotes', 'categories'));
     }
     
-    public function getAuthorsIndex() {
+    public function getAuthorIndex() 
+    {
     
         $quotes = Quote::Approved()
             ->withCount('likes')        
@@ -82,11 +83,13 @@ class PagesController extends Controller
             ->withCount('approvedQuotes')
             ->orderBy('name')
             ->get();
+
+        $topauthors = Author::popular()->orderBy('likes_count', 'desc')->take(10)->get();
  
-        return view('authors.index', compact('quotes', 'authors'));
+        return view('authors.index', compact('quotes', 'authors', 'topauthors'));
     }
 
-    public function getAuthorsName($slug)
+    public function getAuthorName($slug)
     {
         $slug = Author::where('slug', $slug)
             ->withCount('approvedQuotes')
@@ -107,7 +110,7 @@ class PagesController extends Controller
     }
 
     // Author selector for Approved
-    public function postAuthorsSelect(Request $request)
+    public function postAuthorSelect(Request $request)
     {
         $this->validate($request, [
             'author_id' => 'required|integer'

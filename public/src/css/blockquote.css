@@ -1,76 +1,126 @@
-body {
-  background: #ecf0f1;
+/* Fix for fixed header
+-------------------------------------------------- */
+body > .container {
+	padding-top: 84px;
+	padding-bottom: 21px;
 }
 
-.footer {
-  position: relative;
-  margin-top: 21px;
-  background: #2c3e50;
-  border-radius:4px;
-  color:#ecf0f1;
-  padding:10.5px 10.5px 10.5px 10.5px;
-  /*min-height: 100%;*/
-  /*height:auto !important; /* cross-browser */*/
-  /*height: 100%;  cross-browser */
+/* Medium devices Tablets */
+@media (min-width: 768px) and (max-width : 992px) {
+
+	body > .container {
+		padding-top: 146px;
+		padding-bottom: 21px;
+	}
+
 }
-
-/* Pagination */
- .paginate {
-	text-align: center;
- }
-
- /* Right column*/
- .right-column {
- 	padding: 0px 30px; margin-top:21px;
- }
- 
-
-/*Navbar*/
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
+
 	.navbar-collapse img.avatar-img { 
 		width:32px; 
 		height:32px; 
 		position:absolute; 
 		top:5px; 
-		left:12px; 
+		left:14px;
 		border-radius:50%;
 	}
 }
 
-/*@media only screen and (min-width : 768px) {*/
-    /* Make Navigation Toggle on Desktop Hover */
-    /*.dropdown:hover .dropdown-menu {*/
-        /*display: block;*/
-    /*}*/
-/*}*/
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	background: #ecf0f1;
+
+  /* Margin bottom by footer height */
+	margin-bottom: 168px;
+}
+
+.footer {
+	position: absolute;
+	background-color: #2c3e50;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 168px;
+	/*height: auto;*/
+}
+
+/*.footer > .container {
+}
+*/
+
+.footer-left-column {
+	padding-top: 10.5px;
+	padding-bottom: 10.5px;
+}
+
+.footer-right-column {
+	padding-top: 21px;
+	padding-bottom: 10.5px;
+	/*height: 160px;*/
+    /*display: table-cell;*/
+    /*vertical-align: bottom;*/
+    /*float: none;*/
+}
+
+
+/* Various small stuff
+-------------------------------------------------- */
+
+/* Pagination */
+.paginate {
+	text-align: center;
+ }
+
+/* Right column*/
+.right-column {
+	padding: 0px 21px; margin-top:21px;
+ }
+ 
+
+/* Navbar
+-------------------------------------------------- */
+
+/* Make Navigation Toggle on Desktop Hover */
+/*@media only screen and (min-width : 768px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}*/
 
 .avatar-img	{
-	width:36px; 
-	height:36px; 
-	position:absolute; 
-	top:12px; 
-	left:8px; 
+	width:40px;
+	height:40px;
+	position:absolute;
+	top:10px;
+	left:4px;
 	border-radius:50%;
 }
 
 .navbar-brand {
-  font-family: 'Kaushan Script', cursive;
-  font-size:24px;
-  padding: 0px 6px 6px 0px;
-  display: flex;
-  align-items: center;
+	font-family: 'Kaushan Script', cursive;
+	font-size:20px;
+	/*color: #afffee !important;*/
+	padding: 0px 6px 4px 0px;
+	display: flex;
+	align-items: center;
 }
 
 .navbar-brand>img {
-  height: 100%;
-  padding: 2px 10px; /* firefox bug fix */
-  width: auto;
+	height: 100%;
+	padding: 4px 10px; /* firefox bug fix */
+	width: auto;
 }
 
-/*Block quote*/
-
+/* Blockquote styles
+-------------------------------------------------- */
 blockquote {
 	/*display:block;*/
 	background:#fff;
@@ -108,10 +158,10 @@ blockquote a {
 	text-decoration:none!important;
 	/*font-style:italic*/
 	/*color:#ffa133*/
-  transition: all .3s;
-  -moz-transition: all .3s; /* Firefox 4 */
-  -webkit-transition: all .3s; /* Safari and Chrome */
-  -o-transition: all .3s; /* Opera */
+	transition: all .3s;
+	-moz-transition: all .3s; /* Firefox 4 */
+	-webkit-transition: all .3s; /* Safari and Chrome */
+	-o-transition: all .3s; /* Opera */
 
 }
 
@@ -136,12 +186,21 @@ blockquote cite:before {
 }
 
 blockquote:hover {
-  background: #ecf0f1;
-  /*color: #ffffff;*/
+	background: #ecf0f1;
+	/*color: #ffffff;*/
   
-  transition: all .3s;
-  -moz-transition: all .3s; /* Firefox 4 */
-  -webkit-transition: all .3s; /* Safari and Chrome */
-  -o-transition: all .3s; /* Opera */
+	transition: all .3s;
+	-moz-transition: all .3s; /* Firefox 4 */
+	-webkit-transition: all .3s; /* Safari and Chrome */
+	-o-transition: all .3s; /* Opera */
 }
 
+/* Table styles
+-------------------------------------------------- */
+table a {
+	text-decoration:none!important;
+}
+
+table > tbody > tr {
+	border-bottom: 1px solid #ecf0f1;
+}

@@ -13,29 +13,33 @@ Route::get('/vue', [
 ]);
 
 Route::get('/kategorijos', [
-	'uses' => 'PagesController@getCategoriesIndex',
+	'uses' => 'PagesController@getCategoryIndex',
 	'as' => 'categories.index'
 ]);
 
 Route::get('/kategorijos/{slug}', [
-	'uses' => 'PagesController@getCategoriesName',
+	'uses' => 'PagesController@getCategoryName',
 	'as' => 'categories.name'
 ]);
 
-
 Route::get('/autoriai', [ 
-	'uses' => 'PagesController@getAuthorsIndex',
+	'uses' => 'PagesController@getAuthorIndex',
 	'as' => 'authors.index'
 ]);
 
 Route::get('/autoriai/{slug}', [ 
-	'uses' => 'PagesController@getAuthorsName',
+	'uses' => 'PagesController@getAuthorName',
 	'as' => 'authors.name'
 ]);
 
 Route::post('/autoriai', [ 
-	'uses' => 'PagesController@postAuthorsSelect',
+	'uses' => 'PagesController@postAuthorSelect',
 	'as' => 'authors.select'
+]);
+
+Route::get('topautoriai', [
+	'uses' => 'AuthorController@getPopularAuthors',
+	'as' => 'authors.popular'
 ]);
 
 Route::post('/like', [
@@ -47,12 +51,14 @@ Route::post('/like', [
 
 
 // Routes for NoptApproved quotes (Submissions)
-Route::group(['prefix' => '/submissions'], function() {
 
-	Route::get('/create', [
-		'uses' => 'QuoteController@getSubmitForm',
-		'as' => 'submissions.create'
-	]);
+Route::get('/naujas-aforizmas', [
+	'uses' => 'QuoteController@getSubmitForm',
+	'as' => 'submissions.create'
+]);
+
+Route::group(['prefix' => '/nauji-aforizmai'], function() {
+
 
 	Route::post('/create', [
 		'uses' => 'QuoteController@submitQuote',

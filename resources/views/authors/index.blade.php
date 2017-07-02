@@ -50,26 +50,19 @@
 
             {{-- Autoriu topas --}}
             <div class="well">
-                <h4><i class="fa fa-fw fa-lg fa-bar-chart" aria-hidden="true"></i> Populiariausi autoriai <span class="badge badge-default"> Top 10 : </span></h4>
-                <table class="table table-hover">
+                <h4><i class="fa fa-fw fa-lg fa-bar-chart" aria-hidden="true"></i> Populiariausi autoriai:</h4>
+                <table class="table table-striped table-hover">
                     <tbody>
-                        <tr style="border-bottom: 1px solid #ecf0f1;">
-                            <td><span class="badge">1</span> Albert Camus</td>
+                        @foreach ($topauthors as $topauthor)
+                        <tr>
+                            <td><a href="{{ route('authors.name', ['slug' => $topauthor->slug]) }}">{{ $topauthor->name }}</a></td>
+                            <td><span class="badge">{{ $topauthor->likes_count }} <i class="fa fa-heart-o fa-fw"></i></span></td>
                         </tr>
-                        <tr style="border-bottom: 1px solid #ecf0f1;">
-                            <td><span class="badge">2</span> Petras Petrauskas</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #ecf0f1;">
-                            <td><span class="badge">3</span> Oscar Wilde</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>                
-                <ol>
-                    <li>Albert Camus</li>
-                    <li>Petras Petrauskas</li>
-                </ol>
             </div>{{-- /Autoriu topas --}}
-            
+
             {{-- Author selector --}}
             <div class="well">
                 <form class="form" method="POST" action="{{ route('authors.select') }}">

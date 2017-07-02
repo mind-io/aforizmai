@@ -17,13 +17,13 @@ class Like extends Model
     	return $this->belongsTo('App\Quote');
     }
 
-
     // local scope for users likes
-    
     public function scopeUserLikes($query)
     {
         $userID = Auth::user()->id;
         $query->where('user_id', $userID);
-    }    
+    }
+
+    
 
 }

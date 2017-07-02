@@ -21,7 +21,7 @@
                 <ol class="breadcrumb" style="margin: 0px;">
                   <li><a href="{{ route('index') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
                   <li><a href="{{ route('categories.index') }}">Kategorijos</a></li>
-                  <li class="active">Visos</li>
+                  <li class="active">Visos kategorijos</li>
                 </ol>
             </div>
 

@@ -8,15 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Quote extends Model
 {
     
-    // protected static function boot()
-    // {
-    //     parent::boot();
-
-    //     static::addGlobalScope(new QuoteScope);
-    //     static::addGlobalScope(new SubmissionScope);
-    // }
-
-
     public function author()
     {
     	return $this->belongsTo('App\Author');
@@ -47,14 +38,19 @@ class Quote extends Model
         return $this->likes()->userLikes();
     }       
 
+    // local scope for popular (liked) quotes
+    public function scopePopular($query)
+    {
+         $query->has('likes')->withCount('likes')->get();
+    }
 
-    // define local scopes to filter quotes and submissions
-    
+    // local scopes to filter approved quotes
     public function scopeApproved($query)
     {
         $query->where('approved', true);
     }
 
+    // local scopes to filter submissions
     public function scopeNotApproved($query)
     {
         $query->where('approved', false);

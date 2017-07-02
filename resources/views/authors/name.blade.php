@@ -50,13 +50,13 @@
             {{-- Author Bio     --}}
             <div class="well">
                 <h4><i class="fa fa-lg fa-fw fa-info-circle" aria-hidden="true"></i> {{ $slug->name }} bio:</h4>
-                <table class="table table-hover">
+                <table class="table table-striped table-hover">
                     <tbody>
-                        <tr style="border-bottom: 1px solid #ecf0f1;">
+                        <tr>
                             <th>Tautybė:</th>
                             <td>Prancūzija</td>
                         </tr>
-                        <tr style="border-bottom: 1px solid #ecf0f1;">
+                        <tr>
                             <th>Veiklos rūšis:</th>
                             <td>fizikas, filosofas</td>
                         </tr>
