@@ -13,7 +13,7 @@ Route::get('/kategorijos/{slug}', 	['as' => 'category.name', 'uses' => 'Category
 Route::get('nepatvirtinti-aforizmai/kategorijos/{slug}', ['as' => 'submissions.category.name', 'uses' => 'CategoryController@getSubmissionsCategoryName']);
 
 
-// Author routes
+// Author routes test
 Route::get('/autoriai', 		['as' => 'author.index', 'uses' => 'AuthorController@getAuthorIndex']);
 Route::get('/autoriai/{slug}',  ['as' => 'author.name', 'uses' => 'AuthorController@getAuthorName']);
 // Author route for Submissions
