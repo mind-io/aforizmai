@@ -55,6 +55,11 @@ class QuoteController extends Controller
         ]);
     }
 
+    public function showQuote()
+    {
+
+    }
+
 
     // CSV import for Apprtoved Quotes
     public function getCSV() 

@@ -79,6 +79,11 @@ body {
 	text-align: center;
  }
 
+/* Left column*/
+.left-column {
+	padding: 0px 21px;
+ }
+
 /* Right column*/
 .right-column {
 	padding: 0px 21px; margin-top:21px;
@@ -193,6 +198,15 @@ blockquote:hover {
 	-moz-transition: all .3s; /* Firefox 4 */
 	-webkit-transition: all .3s; /* Safari and Chrome */
 	-o-transition: all .3s; /* Opera */
+}
+
+.random {
+	font-size: 26px;
+	background: #ecf0f1;
+	border-left:0px solid #18bc9c;
+	border-right:0px solid #18bc9c;
+	border-radius:5px;
+	box-shadow:2px 2px 2px 2px #ccc
 }
 
 /* Table styles

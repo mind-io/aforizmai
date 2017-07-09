@@ -4,6 +4,7 @@ Route::get('/vue', ['as' => 'vue', 'uses' => 'PagesController@getVue']);
 
 Route::get('/', 						['as' => 'index', 				'uses' => 'PagesController@getIndex']);
 Route::get('/nepatvirtinti-aforizmai', 	['as' => 'submissions.index', 	'uses' => 'PagesController@getSubmissionsIndex']);
+Route::get('/aforizmai/{id}', 			['as' => 'show.quote',		 	'uses' => 'QuoteController@showQuote']);
 
 
 // Category routes

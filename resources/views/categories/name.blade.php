@@ -29,7 +29,9 @@
             </div>
  
             <!-- Blockquote include -->
-            @include('includes.blockquote')
+            @foreach ($quotes as $quote)
+                @include('includes.blockquote')
+            @endforeach
 
             {{-- Pagination --}}
             <div class="paginate">
@@ -46,7 +48,7 @@
 
             <div class="panel panel-success">
                 <div class="panel-heading">
-                    <h4>Aforizmų temos</h4>
+                    <h4><i class="fa fa-fw fa-lg fa-bookmark-o" aria-hidden="true"></i> Aforizmų temos</h4>
                 </div>
                 <div class="panel-body">
                     <div class="list-group">

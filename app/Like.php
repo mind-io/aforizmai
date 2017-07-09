@@ -17,7 +17,7 @@ class Like extends Model
     	return $this->belongsTo('App\Quote');
     }
 
-    // local scope for users likes
+    // local scope for user's likes
     public function scopeUserLikes($query)
     {
         $userID = Auth::user()->id;

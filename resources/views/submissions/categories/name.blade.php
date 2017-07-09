@@ -24,7 +24,11 @@
             </div>
 
             <!-- Blockquote include -->
-            @include('includes.blockquote-submission')
+            @forelse ($quotes as $quote)
+                @include('includes.blockquote-submission')
+            @empty
+                <br><p>Nėra nepatvirtintų aforizmų...</p>
+            @endforelse
 
             {{-- Pagination --}}
             <div class="paginate">
@@ -42,7 +46,7 @@
             {{-- Quote categories panel --}}
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h4>Aforizmų temos</h4>
+                    <h4><i class="fa fa-fw fa-lg fa-bookmark-o" aria-hidden="true"></i> Aforizmų temos</h4>
                 </div>            
                 <div class="panel-body">
                     <div class="list-group">

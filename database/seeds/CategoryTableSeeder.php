@@ -34,31 +34,31 @@ class CategoryTableSeeder extends Seeder
 
         $category = new Category();
         $category->name = "Gėris ir Blogis";
-        $category->description = "Moralė, vertybės, ydos, kultūra, laisvė, karas bei kiti socialiniai aspektai";
+        $category->description = "Moralė, vertybės ir ydos, laisvė ir karas, tiesa ir melas bei kiti socialiniai ir kultūriniai aspektai";
         $category->slug = "geris-blogis";
         $category->save();
 
         $category = new Category();
         $category->name = "Laimė ir Kančia";
-        $category->description = "Taip pat sveikata, malonumas, sėkmė, skausmas, ligos, nesėkmės";
+        $category->description = "Taip pat sveikata ir liga, malonumas ir skausmas, sėkmė ir nesėkmės...";
         $category->slug = "laime-kancia";
         $category->save();
 
         $category = new Category();
         $category->name = "Mokslas ir Tikėjimas";
-        $category->description = "Mokymasis, tobulėjimas, pasiekimai, dvasinės vertybės, religijos";
+        $category->description = "Mokymasis, tobulėjimas, pasiekimai, dvasinės vertybės, religija";
         $category->slug = "mokslas-religija";
         $category->save();
 
         $category = new Category();
         $category->name = "Menas ir Literatūra";
-        $category->description = "Poezija, muzika, dailė, šokis bei kitos meno rūšys";
+        $category->description = "Poezija, muzika, dailė, šokis bei kiti menai ar kūryba";
         $category->slug = "menas-literatura";
         $category->save();
 
         $category = new Category();
         $category->name = "Valdžia ir Pinigai";
-        $category->description = "Politika, galia, verslas, turtas, skurdas bei visos materialios vertybės";
+        $category->description = "Politika, galia, verslas, darbas, turtas ir skurdas bei visos materialios vertybės";
         $category->slug = "valdzia-pinigai";
         $category->save();
 

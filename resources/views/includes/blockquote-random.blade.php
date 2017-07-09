@@ -1,7 +1,7 @@
-                <blockquote>
+                <blockquote class="random">
 
                     {{-- Quote content --}}
-                    <p>{{ $quote->quote }}</p> 
+                    <p>{{ $quote->quote }}</p>
                     <cite>
                         <a href="{{ route('author.name', ['slug' => $quote->author->slug]) }}">{{ $quote->author->name }}</a> |
                         <a href="{{ route('category.name', ['slug' => $quote->category->slug]) }}">{{ $quote->category->name }}</a>

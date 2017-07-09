@@ -32,8 +32,10 @@
             </div>
 
             <!-- Blockquote include -->
-            @include('includes.blockquote')
-
+            @foreach ($quotes as $quote)
+                @include('includes.blockquote')
+            @endforeach
+            
             {{-- Pagination --}}
             <div class="paginate">
                 <nav>
@@ -56,7 +58,7 @@
                         @foreach ($topauthors as $topauthor)
                         <tr>
                             <td><a href="{{ route('author.name', ['slug' => $topauthor->slug]) }}">{{ $topauthor->name }}</a></td>
-                            <td><span class="badge">{{ $topauthor->likes_count }} <i class="fa fa-heart fa-fw"></i></span></td>
+                            <td><span class="label label-success">{{ $topauthor->likes_count }} <i class="fa fa-heart fa-fw"></i></span></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -68,7 +70,8 @@
                 <form class="form" method="POST" action="{{ route('author.select') }}">
                 {{ csrf_field() }}
                     <div class="form-group input-group-lg {{ $errors->has('author_id') ? ' has-error' : '' }}">
-                        <label class="control-label" for="author_id"><h4>Filtruoti pagal autorių:</h4></label>
+                        <label class="control-label" for="author_id">
+                        <h4><i class="fa fa-fw fa-lg fa-search" aria-hidden="true"></i> Filtruoti pagal autorių:</h4></label>
                         <select id="author_id" class="form-control select2 input-lg" name="author_id">
                             <option> </option>
                             @foreach ($authors as $author)
