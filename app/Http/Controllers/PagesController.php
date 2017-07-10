@@ -20,9 +20,15 @@ class PagesController extends Controller
     public function getIndex() {
 
         $newQuotes = Quote::notApproved()->orderBy('created_at', 'desc')->take(5)->withCount('likes')->get();
-        $popularQuotes = Quote::popular()->get()->random(5);
+        
+        $popularQuotes = Quote::popular()->get();
+        if (count($popularQuotes) > 5) {
+            return $popularQuotes->random(5);
+        }
+        $popularQuotes;
+
         $randomQuote = Quote::approved()->withCount('likes')->get()->random();
-        // dd($randomQuote);
+        // dd($popularQuotes);
         
         return view('index', compact('newQuotes', 'popularQuotes', 'randomQuote'));
     }

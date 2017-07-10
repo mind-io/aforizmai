@@ -1,4 +1,6 @@
 <blockquote>
+
+    {{-- Quote content --}}
     <p>{{ $quote->quote }}</p>
 
     <cite>
@@ -6,7 +8,7 @@
         <a href="{{ route('submissions.category.name', ['slug' => $quote->category->slug]) }}">{{ $quote->category->name }}</a>
     </cite>
 
-    {{-- fa buttons --}}
+    {{-- Quote buttons --}}
     <p align="right" data-quoteid="{{ $quote->id }}">
 
         @if(Auth::user()) {{-- is a user --}}
@@ -49,7 +51,7 @@
         @else {{-- is not a user --}}
             <div class="text-right">
                 <div class="btn-group btn-group-xs" role="group">
-                    <a href="{{ route('login') }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Prisijunk ir Balsuok!"><span class="badge"><strong> {{ $quote->votes()->sum('vote') }} </strong> </span><strong>&nbsp; Prisijunk ir balsuok <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i></strong>
+                    <a href="{{ route('login') }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Prisijunk ir Balsuok!"><span class="badge"><strong> {{ $quote->votes()->sum('vote') }} </strong> </span><strong>&nbsp;Prisijunk ir balsuok <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i></strong>
                     </a>
                 </div>
             </div>

@@ -31,7 +31,7 @@
                         @forelse ($newQuotes as $quote)
                             @include('includes.blockquote-submission')
                         @empty
-                            <br><p>Nėra nepatvirtintų aforizmų...</p>
+                            <br><p>Nėra naujų aforizmų...</p>
                         @endforelse
                     </div>
                     <div class="row">
@@ -46,9 +46,11 @@
                 <!-- Tab "popular-quotes" -->
                 <div role="tabpanel" class="tab-pane fade in" id="popular-quotes">
                     <div>
-                        @foreach ($popularQuotes as $quote)
+                        @forelse ($popularQuotes as $quote)
                             @include('includes.blockquote')
-                        @endforeach
+                        @empty
+                            <br><p>Nėra populiarių aforizmų...</p>
+                        @endforelse
                     </div>
                     <div class="row">
                         <div class="col-xs-3"></div>
