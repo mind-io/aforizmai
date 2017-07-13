@@ -15,7 +15,7 @@
             <!-- left column -->
             <div class="col-md-4 col-sm-5 col-xs-12" style="margin-top: 21px;">
                 <div class="text-center">
-                    <img src="/src/img/uploads/avatars/{{ $user->avatar }}" class="avatar img-circle img-thumbnail" alt="avatar">
+                    <img src="/img/uploads/avatars/{{ $user->avatar }}" class="avatar img-circle img-thumbnail" alt="avatar">
 {{--                     <h5><i class="fa fa-camera fa-fw"></i> Pakeisti profilio nuotrauką:</h5>
                     <input type="file" name="avatar" class="text-center center-block well well-sm"> --}}
                 </div>

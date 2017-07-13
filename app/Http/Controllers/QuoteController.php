@@ -64,7 +64,7 @@ class QuoteController extends Controller
     // CSV import for Apprtoved Quotes
     public function getCSV() 
     {
-        if (($handle = fopen('quotes.csv',"r")) !== FALSE)
+        if (($handle = fopen('import/quotes.csv',"r")) !== FALSE)
         {
             while (($data = fgetcsv($handle, 1000, ';')) !==FALSE)
             {

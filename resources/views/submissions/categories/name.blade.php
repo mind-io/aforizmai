@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-        Kategorija - {{ $slug->name }}
+        Nepatvirtinti aforizmai - {{ $slug->name }}
 @endsection
 
 @section('content')

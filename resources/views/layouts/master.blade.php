@@ -6,12 +6,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Aforizmų galerija | @yield('title')</title>
 
-			<link rel="stylesheet" href="{{ URL::to('src/css/bootstrap.min.css') }}" type="text/css" />
+			<link rel="stylesheet" href="{{ URL::to('css/bootstrap.min.css') }}" type="text/css" />
 		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 			<link href='https://fonts.googleapis.com/css?family=Kaushan+Script&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 			
 			@yield('styles')
-			<link rel="stylesheet" href="{{ URL::to('src/css/blockquote.css') }}" type="text/css" />
+			<link rel="stylesheet" href="{{ URL::to('css/blockquote.css') }}" type="text/css" />
 	</head>
 	<body id="app-layout">
 		@include('includes.header')

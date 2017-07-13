@@ -6,7 +6,7 @@
 
 @section('styles')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ URL::to('src/css/select2-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::to('css/select2-bootstrap.min.css') }}">
 @endsection
 
 @section('content')
@@ -119,7 +119,7 @@
         });
     </script>
 
-    <script type="text/javascript" src="{{ URL::to('src/js/vote.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/vote.js') }}"></script>
     <script>
         var token = '{{ Session::token() }}';
         var urlVote = '{{ route('submissions.vote') }}';

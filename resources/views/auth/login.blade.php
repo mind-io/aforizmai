@@ -10,7 +10,7 @@
         <div class="col-md-8 col-md-offset-2">
             <br>
             <div class="panel panel-primary">
-                <div class="panel-heading">Įveskite prisijungimo duomenis:</div>
+                <div class="panel-heading">Įvesk prisijungimo duomenis:</div>
                 <div class="panel-body" style="padding-top: 30px;">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
@@ -62,8 +62,10 @@
                                 </button>
 
                                 <br><br>
-                                <a class="btn btn-default btn-xs" href="{{ url('/password/reset') }}"><i class="fa fa-key fa-fw" aria-hidden="true"></i> Užmiršai savo slaptažodį?</a>&nbsp;
-                                <a class="btn btn-default btn-xs" href="{{ url('/register') }}"><i class="fa fa-btn fa-user-plus fa-fw" aria-hidden="true"></i> Neturi paskyros?</a>
+                                <a class="btn btn-default btn-xs" href="{{ url('/password/reset') }}" style="margin-right: 7px;">
+                                <i class="fa fa-key fa-fw" aria-hidden="true"></i> Užmiršai savo slaptažodį?</a>
+                                <a class="btn btn-default btn-xs" href="{{ url('/register') }}">
+                                <i class="fa fa-btn fa-user-plus fa-fw" aria-hidden="true"></i> Neturi paskyros?</a>
                             </div>
                         </div>
                     </form>

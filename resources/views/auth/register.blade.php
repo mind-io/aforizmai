@@ -10,7 +10,7 @@
         <div class="col-md-8 col-md-offset-2">
             <br>
             <div class="panel panel-primary">
-                <div class="panel-heading">Užpildykite registracijos formą:</div>
+                <div class="panel-heading">Užpildyk registracijos formą:</div>
                 <div class="panel-body" style="padding-top: 30px;">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Pakartokite slaptažodį</label>
+                            <label for="password-confirm" class="col-md-4 control-label">Pakartok slaptažodį</label>
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>

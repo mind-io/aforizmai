@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Kategorija - {{ $slug->name }}
+    Tema - {{ $slug->name }}
 @endsection
 
 @section('content')
@@ -23,7 +23,7 @@
             <div>
                 <ol class="breadcrumb" style="margin: 0px;">
                   <li><a href="{{ route('index') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                  <li><a href="{{ route('category.index') }}">Kategorijos</a></li>
+                  <li><a href="{{ route('category.index') }}">Temos</a></li>
                   <li class="active">{{ $slug->name }}</li>
                 </ol>
             </div>
@@ -75,7 +75,7 @@
 
 @section('scripts')
 
-    <script type="text/javascript" src="{{ URL::to('src/js/like.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/like.js') }}"></script>
     <script>
         var token = '{{ Session::token() }}';
         var urlLike = '{{ route('like.quote') }}';

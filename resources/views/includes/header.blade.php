@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{ url('/') }}"><img alt="Aforizmų galerija" src="{{ URL::to('src/img/logo2b.png') }}">Aforizmų<br>galerija </a>
+      <a class="navbar-brand" href="{{ url('/') }}"><img alt="Aforizmų galerija" src="{{ URL::to('/img/logo2b.png') }}">Aforizmų<br>galerija </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -55,7 +55,7 @@
         @else
           <li class="dropdown">
             <a href="{{ route('user.profile') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="position:relative; padding-left:50px;">
-            <img src="/src/img/uploads/avatars/{{ Auth::user()->avatar }}" class="avatar-img"> 
+            <img src="/img/uploads/avatars/{{ Auth::user()->avatar }}" class="avatar-img"> 
             {{ Auth::user()->name }}
             <span class="caret"></span></a>
             <ul class="dropdown-menu">

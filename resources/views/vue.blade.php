@@ -87,6 +87,6 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript" src="{{ URL::to('src/js/vue.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('src/js/appv.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/vue.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/appv.js') }}"></script>
 @endsection

@@ -74,8 +74,8 @@
 
 @section('scripts')
 
-    <script type="text/javascript" src="{{ URL::to('src/js/like.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('src/js/vote.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/like.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('js/vote.js') }}"></script>
     <script>
         var token = '{{ Session::token() }}';
         var urlLike = '{{ route('like.quote') }}';
