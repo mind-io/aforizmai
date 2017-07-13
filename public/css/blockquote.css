@@ -1,0 +1,220 @@
+/* Fix for fixed header
+-------------------------------------------------- */
+body > .container {
+	padding-top: 84px;
+	padding-bottom: 21px;
+}
+
+/* Medium devices Tablets */
+@media (min-width: 768px) and (max-width : 992px) {
+
+	body > .container {
+		padding-top: 146px;
+		padding-bottom: 21px;
+	}
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+
+	.navbar-collapse img.avatar-img { 
+		width:32px; 
+		height:32px; 
+		position:absolute; 
+		top:5px; 
+		left:14px;
+		border-radius:50%;
+	}
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	background: #ecf0f1;
+
+  /* Margin bottom by footer height */
+	margin-bottom: 168px;
+}
+
+.footer {
+	position: absolute;
+	background-color: #2c3e50;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 168px;
+	/*height: auto;*/
+}
+
+/*.footer > .container {
+}
+*/
+
+.footer-left-column {
+	padding-top: 10.5px;
+	padding-bottom: 10.5px;
+}
+
+.footer-right-column {
+	padding-top: 21px;
+	padding-bottom: 10.5px;
+	/*height: 160px;*/
+    /*display: table-cell;*/
+    /*vertical-align: bottom;*/
+    /*float: none;*/
+}
+
+
+/* Various small stuff
+-------------------------------------------------- */
+
+/* Pagination */
+.paginate {
+	text-align: center;
+ }
+
+/* Left column*/
+.left-column {
+	padding: 0px 21px;
+ }
+
+/* Right column*/
+.right-column {
+	padding: 0px 21px; margin-top:21px;
+ }
+ 
+
+/* Navbar
+-------------------------------------------------- */
+
+/* Make Navigation Toggle on Desktop Hover */
+/*@media only screen and (min-width : 768px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}*/
+
+.avatar-img	{
+	width:40px;
+	height:40px;
+	position:absolute;
+	top:10px;
+	left:4px;
+	border-radius:50%;
+}
+
+.navbar-brand {
+	font-family: 'Kaushan Script', cursive;
+	font-size:20px;
+	/*color: #afffee !important;*/
+	padding: 0px 6px 4px 0px;
+	display: flex;
+	align-items: center;
+}
+
+.navbar-brand>img {
+	height: 100%;
+	padding: 4px 10px; /* firefox bug fix */
+	width: auto;
+}
+
+/* Blockquote styles
+-------------------------------------------------- */
+blockquote {
+	/*display:block;*/
+	background:#fff;
+	padding:25px 15px 10px;
+	margin:30px 0;
+	position:relative;
+	/*font-family:Georgia,serif;*/
+	/*font-size:16px;*/
+	line-height:1.2em;
+	/*color:#666;*/
+	/*text-align:justify;*/
+	border-left:7px solid #2c3e50;
+	border-right:2px solid #2c3e50;
+	border-radius:3px;
+	box-shadow:2px 2px 10px #ccc
+}
+
+blockquote::before {
+	content:"\201C";
+	font-family:Georgia,serif;
+	font-size:70px;
+	font-weight:bold;
+	color:#18bc9c;
+	position:absolute;
+	left:15px;
+	top:7px;
+	text-shadow:2px 2px 0 #ccc
+}
+
+blockquote::after {
+	content:""
+}
+
+blockquote a {
+	text-decoration:none!important;
+	/*font-style:italic*/
+	/*color:#ffa133*/
+	transition: all .3s;
+	-moz-transition: all .3s; /* Firefox 4 */
+	-webkit-transition: all .3s; /* Safari and Chrome */
+	-o-transition: all .3s; /* Opera */
+
+}
+
+blockquote a:hover {
+	text-decoration:none;
+	color:#333
+}
+
+blockquote p {
+	margin:0!important
+}
+
+blockquote cite {
+	/*color:#999;*/
+	font-size:16px;
+	display:block;
+	margin-top:5px;
+}
+
+blockquote cite:before {
+	content:"\2014 \2009";
+}
+
+blockquote:hover {
+	background: #ecf0f1;
+	/*color: #ffffff;*/
+  
+	transition: all .3s;
+	-moz-transition: all .3s; /* Firefox 4 */
+	-webkit-transition: all .3s; /* Safari and Chrome */
+	-o-transition: all .3s; /* Opera */
+}
+
+.random {
+	font-size: 26px;
+	background: #ecf0f1;
+	border-left:0px solid #18bc9c;
+	border-right:0px solid #18bc9c;
+	border-radius:5px;
+	box-shadow:2px 2px 2px 2px #ccc
+}
+
+/* Table styles
+-------------------------------------------------- */
+table a {
+	text-decoration:none!important;
+}
+
+table > tbody > tr {
+	border-bottom: 1px solid #ecf0f1;
+}
