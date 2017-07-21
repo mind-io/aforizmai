@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -51,7 +51,7 @@
         <!-- Authentication Links -->
         @if (Auth::guest())
           <li><a href="{{ url('/login') }}"><i class="fa fa-btn fa-sign-in fa-lg fa-fw"></i> Prisijungti</a></li>
-          <li><a href="{{ url('/register') }}"><i class="fa fa-btn fa-user-plus fa-lg fa-fw"></i> Užsiregistruoti</a></li>
+          {{-- <li><a href="{{ url('/register') }}"><i class="fa fa-btn fa-user-plus fa-lg fa-fw"></i> Užsiregistruoti</a></li> --}}
         @else
           <li class="dropdown">
             <a href="{{ route('user.profile') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="position:relative; padding-left:50px;">

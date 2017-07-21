@@ -15,7 +15,7 @@ class AuthorController extends Controller
         $quotes = Quote::Approved()
             ->withCount('likes')        
             ->orderBy('created_at', 'desc')
-            ->paginate(5);
+            ->paginate(7);
         $authors = Author::has('approvedQuotes')
             ->withCount('approvedQuotes')
             ->orderBy('name')
@@ -34,7 +34,7 @@ class AuthorController extends Controller
             ->Approved()
             ->withCount('likes')            
             ->orderBy('created_at', 'desc')
-            ->paginate(5);
+            ->paginate(7);
         $authors = Author::has('approvedQuotes')
             ->withCount('approvedQuotes')
             ->orderBy('name')
@@ -49,7 +49,7 @@ class AuthorController extends Controller
         $quotes = $slug->quotes()
             ->NotApproved()
             ->orderBy('created_at', 'desc')
-            ->paginate(5);
+            ->paginate(7);
         $authors = Author::has('notApprovedQuotes')
             ->withCount('notApprovedQuotes')
             ->orderBy('name')

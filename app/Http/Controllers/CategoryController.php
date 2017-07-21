@@ -14,7 +14,7 @@ class CategoryController extends Controller
         $quotes = Quote::approved()
             ->withCount('likes')
             ->orderBy('created_at', 'desc')
-            ->paginate(5);
+            ->paginate(7);
         $categories = Category::has('approvedQuotes')
             ->withCount('approvedQuotes')
             ->orderBy('id')
@@ -32,7 +32,7 @@ class CategoryController extends Controller
             ->approved()
             ->withCount('likes')            
             ->orderBy('created_at', 'desc')
-            ->paginate(5);
+            ->paginate(7);
         $categories = Category::has('approvedQuotes')
             ->withCount('approvedQuotes')
             ->orderBy('id')
@@ -47,7 +47,7 @@ class CategoryController extends Controller
         $quotes = $slug->quotes()
             ->NotApproved()
             ->orderBy('created_at', 'desc')
-            ->paginate(5);
+            ->paginate(7);
         $categories = Category::has('notApprovedQuotes')
             ->withCount('notApprovedQuotes')
             ->orderBy('id')

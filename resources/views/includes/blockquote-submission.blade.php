@@ -51,7 +51,10 @@
         @else {{-- is not a user --}}
             <div class="text-right">
                 <div class="btn-group btn-group-xs" role="group">
-                    <a href="{{ route('login') }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Prisijunk ir Balsuok!"><span class="badge"><strong> {{ $quote->votes()->sum('vote') }} </strong> </span><strong>&nbsp;Prisijunk ir balsuok <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i></strong>
+                    <a href="{{ route('login') }}" class="btn btn-primary btn-md" data-toggle="tooltip" data-placement="top" title="Prisijunk ir Balsuok!">
+                    <span class="badge"> {{ $quote->votes()->sum('vote') }} </span>
+                    &nbsp; Prisijunk ir balsuok 
+                    <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>

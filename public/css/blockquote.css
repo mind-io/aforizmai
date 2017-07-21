@@ -1,21 +1,22 @@
 /* Fix for fixed header
 -------------------------------------------------- */
-body > .container {
+/*body > .container {
 	padding-top: 84px;
 	padding-bottom: 21px;
-}
+}*/
 
 /* Medium devices Tablets */
-@media (min-width: 768px) and (max-width : 992px) {
+/*@media (min-width: 768px) and (max-width : 992px) {
 
 	body > .container {
 		padding-top: 146px;
 		padding-bottom: 21px;
 	}
 
-}
+}*/
 
-/* Small Devices, Tablets */
+/* Avatar Image Fix for Small Devices, Tablets
+-------------------------------------------------- */
 @media only screen and (max-width : 768px) {
 
 	.navbar-collapse img.avatar-img { 
@@ -38,8 +39,8 @@ html {
 body {
 	background: #ecf0f1;
 
-  /* Margin bottom by footer height */
-	margin-bottom: 168px;
+  	/* Margin bottom by footer height */
+	margin-bottom: 189px;
 }
 
 .footer {
@@ -48,17 +49,27 @@ body {
 	bottom: 0;
 	width: 100%;
 	/* Set the fixed height of the footer here */
-	height: 168px;
-	/*height: auto;*/
+	/*height: 189px;*/
+	height: auto;
 }
+
+/* Sticky Footer Fix for Small Devices, Tablets */
+@media only screen and (max-width : 992px) {
+
+	body {
+		/* Margin bottom by footer height */
+		margin-bottom: 378px;
+	}
+}
+
 
 /*.footer > .container {
 }
 */
 
 .footer-left-column {
-	padding-top: 10.5px;
-	padding-bottom: 10.5px;
+	padding-top: 21px;
+	/*padding-bottom: 10.5px;*/
 }
 
 .footer-right-column {
@@ -68,6 +79,7 @@ body {
     /*display: table-cell;*/
     /*vertical-align: bottom;*/
     /*float: none;*/
+	background-color: #1a242f;
 }
 
 
@@ -86,7 +98,8 @@ body {
 
 /* Right column*/
 .right-column {
-	padding: 0px 21px; margin-top:21px;
+	padding: 0px 21px;
+	margin-top:21px;
  }
  
 
